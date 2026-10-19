@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+### Added
+
+- Added Patreon and permanent Discord invite badges to the README and Foundry listing.
+
 ## [14.1.7] - 2026-10-18
 
 ### Added

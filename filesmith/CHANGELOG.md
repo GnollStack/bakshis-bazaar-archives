@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+### Added
+
+- Added Patreon and permanent Discord invite badges to the README and Foundry listing.
+
 ### Changed
 
 - Updated documentation links to Bakshi's Bazaar Archives and the permanent Discord invite.
