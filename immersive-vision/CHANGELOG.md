@@ -1,8 +1,15 @@
 # Immersive Vision FX changelog
 
-History starts with the next release. **Unreleased** lists changes that haven't shipped yet.
+**Unreleased** lists changes that haven't shipped yet.
 
 ## Unreleased
+
+### Changed
+
+- Updated documentation links to Bakshi's Bazaar Archives and the permanent Discord invite.
+- Corrected the README version badge to 14.2.2.
+
+## [14.2.2] - 2026-10-14
 
 ### Added
 

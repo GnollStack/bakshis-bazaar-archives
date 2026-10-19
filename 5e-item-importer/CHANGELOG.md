@@ -4,6 +4,15 @@
 
 ## Unreleased
 
+### Changed
+
+- Lowered the Foundry VTT minimum to 14.367. Verified remains 14.369, the supported generation remains V14, and D&D 5e 6.0.6 is still required.
+- Integrated recipe and import-window features into the existing README sections and removed the release callouts.
+
+### Removed
+
+- Removed Ko-fi support links from the Markdown README and generated HTML listing.
+
 ## [14.2.0] - 2026-10-18
 
 ### Added

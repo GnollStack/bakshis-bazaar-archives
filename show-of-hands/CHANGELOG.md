@@ -1,8 +1,18 @@
 # Show of Hands: Targeting & Cursors changelog
 
-History starts with the next release. **Unreleased** lists changes that haven't shipped yet.
+**Unreleased** lists changes that haven't shipped yet.
 
 ## Unreleased
+
+### Changed
+
+- Updated documentation links to Bakshi's Bazaar Archives and the permanent Discord invite.
+
+### Removed
+
+- Removed Ko-fi support links from the Markdown README and generated HTML listing.
+
+## [14.2.3] - 2026-10-14
 
 ### Added
 
