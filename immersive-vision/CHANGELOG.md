@@ -4,6 +4,12 @@
 
 ## Unreleased
 
+## [14.3.2] - 2026-10-30
+
+### Added
+
+- IVFX now tells you when it falls back to Foundry's standard vision. GMs see a short on-screen warning once per session when other code or the device is the cause, and every client's browser console names the reason, the token and scene, any code that replaced Foundry's vision behavior, and the active modules and world scripts. For GMs it also names the module or file responsible when it can find one. Vision modes that are simply unsupported, such as Tremorsense, stay in the console. Players see the on-screen warning only when their own graphics hardware is the reason.
+
 ## [14.3.0] - 2026-10-25
 
 ### Added
