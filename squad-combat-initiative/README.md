@@ -6,10 +6,10 @@
 
 | Shows | File |
 | --- | --- |
-| Tracker overview | [squad-combat-initiative-tracker-overview.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/squad-combat-initiative/images/squad-combat-initiative-tracker-overview.png) |
-| Combat groups | [squad-combat-initiative-combat-groups.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/squad-combat-initiative/images/squad-combat-initiative-combat-groups.png) |
-| Group initiative | [squad-combat-initiative-group-initiative.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/squad-combat-initiative/images/squad-combat-initiative-group-initiative.png) |
-| Captain controls | [squad-combat-initiative-captain-controls.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/squad-combat-initiative/images/squad-combat-initiative-captain-controls.png) |
-| Squad Combat Initiative settings and controls | [squad-combat-initiative-morale-settings.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/squad-combat-initiative/images/squad-combat-initiative-morale-settings.png) |
+| Squad cards in the combat tracker | [squad-combat-initiative-squad-cards.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/squad-combat-initiative/images/squad-combat-initiative-squad-cards.png) |
+| Squad cards in the tracker popout | [squad-combat-initiative-tracker-popout.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/squad-combat-initiative/images/squad-combat-initiative-tracker-popout.png) |
+| Squad actions and the More menu | [squad-combat-initiative-squad-actions.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/squad-combat-initiative/images/squad-combat-initiative-squad-actions.png) |
+| Create Group dialog with presets | [squad-combat-initiative-create-squad.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/squad-combat-initiative/images/squad-combat-initiative-create-squad.png) |
+| Squad Combat Initiative settings | [squad-combat-initiative-settings.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/squad-combat-initiative/images/squad-combat-initiative-settings.png) |
 
-These screenshots show the earlier compact squad headers. Version 14.2.0 uses expanded squad cards.
+Screenshots show the 14.3.0 squad cards on Foundry VTT 14 with dnd5e 6.
