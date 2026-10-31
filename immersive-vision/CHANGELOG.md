@@ -20,6 +20,7 @@
 - The module loads less code at startup. The GM diagnostics tools load only when they are used.
 - Debug logging no longer costs anything while it is turned off.
 - Leaving a scene cleans up every effect in a fixed order, and one failed step no longer skips the rest.
+- Verified on Foundry 14.369.
 
 ### Fixed
 

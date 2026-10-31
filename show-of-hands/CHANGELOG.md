@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [14.2.4] - 2026-10-25
+
 ### Added
 
 - GM Pull Ping View world setting: fit the GM's visible map area to each viewer's screen (default), keep each viewer's zoom, or match the GM's numeric zoom (labeled Foundry VTT default). Uses Shift + hold-left-click and applies once to viewers already on the same scene and level. Different screen shapes can show extra map at the edges; Foundry's camera limits still apply. Reload all clients after updating.
