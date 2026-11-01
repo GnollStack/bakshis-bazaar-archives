@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [14.4.0] - 2026-10-31
+
 ### Added
 
 - Shared initiative mode: a squad rolls once and every member carries that value, including members who join later. Mixed squads work, and native rolls that get replaced return if the squad leaves the mode.
