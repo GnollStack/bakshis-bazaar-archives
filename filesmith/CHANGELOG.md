@@ -4,12 +4,15 @@
 
 ## Unreleased
 
+## [14.3.6] - 2026-11-02
+
 ### Added
 
 - Added Patreon and permanent Discord invite badges to the README and Foundry listing.
 
 ### Changed
 
+- Verified on Foundry VTT 14.369. Container-aware copy and deletion are now also tested with D&D 5e 6.0.6.
 - Updated documentation links to Bakshi's Bazaar Archives and the permanent Discord invite.
 - Corrected the README version badge to 14.3.5.
 
