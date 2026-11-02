@@ -4,9 +4,15 @@
 
 ## Unreleased
 
+## [14.1.8] - 2026-11-01
+
 ### Added
 
 - Added Patreon and permanent Discord invite badges to the README and Foundry listing.
+
+### Changed
+
+- Shorter, clearer hint on the diagnostics setting.
 
 ## [14.1.7] - 2026-10-18
 

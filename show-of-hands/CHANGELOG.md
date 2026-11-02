@@ -4,6 +4,20 @@
 
 ## Unreleased
 
+## [14.2.5] - 2026-11-02
+
+### Changed
+
+- Shorter, clearer hint on the diagnostics setting.
+
+### Fixed
+
+- The README and listing showed an out-of-date version number.
+
+### Removed
+
+- Removed the developer diagnostics section from the README and listing.
+
 ## [14.2.4] - 2026-10-25
 
 ### Added

@@ -4,12 +4,20 @@
 
 ## Unreleased
 
+## [14.15.6] - 2026-11-02
+
+### Added
+
+- A Questions and chat link to the Discord on the GitHub new-issue page.
+
 ### Changed
 
 - Updated documentation links to Bakshi's Bazaar Archives and the permanent Discord invite.
+- Shorter, clearer hint on the diagnostics setting.
 
 ### Removed
 
+- Removed the developer diagnostics section from the README and listing.
 - Removed Ko-fi support links from the Markdown README and generated HTML listing.
 
 ## [14.15.5] - 2026-10-14

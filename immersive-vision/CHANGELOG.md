@@ -4,6 +4,16 @@
 
 ## Unreleased
 
+### Fixed
+
+- Color Tint now keeps its color when a profile also uses a species spectrum or always-on Dichromacy. A green tint on a Canid profile used to turn a dim yellow. Profiles combining those settings will look different after updating, and can be adjusted with Color Tint Strength.
+
+## [14.3.3] - 2026-11-01
+
+### Fixed
+
+- The Outdoor Light settings in Scene Configuration appeared on every tab. They now sit at the bottom of the Visibility tab and scroll with it.
+
 ## [14.3.2] - 2026-10-30
 
 ### Added

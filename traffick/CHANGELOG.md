@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [14.2.1] - 2026-11-01
+
 ### Added
 
 - Added Patreon and permanent Discord invite badges to the README and Foundry listing.
@@ -11,6 +13,7 @@
 ### Changed
 
 - Simplified the README and Foundry listing with shorter feature summaries and collapsible guides for trade controls, payments, appraisals, and recovery.
+- Clearer hint on the diagnostics setting.
 
 ## [14.2.0] - 2026-10-18
 

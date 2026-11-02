@@ -4,6 +4,13 @@
 
 ## Unreleased
 
+## [14.4.1] - 2026-11-01
+
+### Changed
+
+- Shorter, clearer hints on the two diagnostics settings.
+- Clearer wording on the bug report form's log field.
+
 ## [14.4.0] - 2026-10-31
 
 ### Added

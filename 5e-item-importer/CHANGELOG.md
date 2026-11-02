@@ -4,10 +4,14 @@
 
 ## Unreleased
 
+## [14.2.1] - 2026-11-01
+
 ### Changed
 
 - Lowered the Foundry VTT minimum to 14.367. Verified remains 14.369, the supported generation remains V14, and D&D 5e 6.0.6 is still required.
 - Integrated recipe and import-window features into the existing README sections and removed the release callouts.
+- The field catalog guide now shows how to query the catalog from the browser console, with a copy-ready example.
+- Shorter, clearer hints on the two troubleshooting settings.
 
 ### Removed
 

@@ -4,9 +4,16 @@
 
 ## Unreleased
 
+## [14.2.1] - 2026-11-01
+
 ### Added
 
 - Added Patreon and permanent Discord invite badges to the README and Foundry listing.
+
+### Changed
+
+- The field catalog guide now shows how to query the catalog from the browser console, with a copy-ready example.
+- Shorter, clearer hints on the two troubleshooting settings.
 
 ## [14.2.0] - 2026-10-18
 
