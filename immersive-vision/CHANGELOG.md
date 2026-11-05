@@ -4,8 +4,22 @@
 
 ## Unreleased
 
+## [14.4.0] - 2026-11-05
+
+### Changed
+
+- IVFX no longer turns itself off. Unfamiliar vision modes such as Tremorsense, vision modes or shaders replaced by another module, and graphics-budget checks used to switch the view back to Foundry's standard vision. The effects now stay on, and the per-client master toggle still turns them off.
+- On graphics hardware that can't run one of the vision effects, IVFX skips only that effect and keeps Foundry's normal rendering for it. The other effects stay on, and you see one message about it.
+- Turns, token moves, and token selection cost less with IVFX enabled. In my 60-token test scene IVFX no longer adds measurable frame time. With 120 tokens, the slowest frame of a token move takes about 2 ms longer than without IVFX.
+- Removed the fallback warnings and the search for the module behind a fallback, since IVFX no longer falls back.
+
 ### Fixed
 
+- IVFX no longer pauses its effects when another module changes how Foundry decides what a token can see. This affected Midi-QOL, Limits, Vision 5e, and Stealthy. Effects now stay on, and creatures those modules hide stay hidden. In those worlds light amplification won't reveal extra tokens.
+- In those same worlds, IVFX no longer switches to Foundry's standard vision and back each time a token is selected or released. Each switch rebuilt the scene's vision, several times every combat turn.
+- If turning IVFX on or off runs into an error, it now tries again a few times instead of staying off until you toggle it. If it still can't, you get one message saying what to do.
+- If another module replaces the canvas filters IVFX draws with, IVFX puts its effects back within about a second. Before, they stayed gone until the next scene change.
+- A module that changes token detection is now recognized even when it loads before IVFX, so creatures it hides stay hidden.
 - Color Tint now keeps its color when a profile also uses a species spectrum or always-on Dichromacy. A green tint on a Canid profile used to turn a dim yellow. Profiles combining those settings will look different after updating, and can be adjusted with Color Tint Strength.
 
 ## [14.3.3] - 2026-11-01
