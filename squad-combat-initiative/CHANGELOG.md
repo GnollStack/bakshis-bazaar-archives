@@ -4,6 +4,10 @@
 
 ## Unreleased
 
+### Changed
+
+- **Player Morale Visibility** now defaults to **GM Only**, so players no longer see enemy morale unless the GM turns it on. A world that already saved this setting keeps its choice.
+
 ## [14.4.1] - 2026-11-01
 
 ### Changed
