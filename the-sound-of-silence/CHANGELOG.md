@@ -4,6 +4,27 @@
 
 ## Unreleased
 
+## [14.16.0] - 2026-11-08
+
+### Changed
+
+- The Sound of Silence now requires Foundry V14. 14.15.7 was the last release for Foundry V13.
+- Fade-ins and end-of-track fades are capped at half the length of the track, the same cap Foundry applies to its own fades and the one crossfades already had, so the two can no longer overlap on a short track.
+- Silence gaps, soundscape timers, loop timers and the loop and soundscape previews now follow the playlist's audio channel, so Environment and Interface playlists keep their own timing and volume.
+- Personal Audio Mix sliders now scale the GM's mix instead of replacing it. 100% plays a track exactly as the GM mixed it, and the GM's volume changes, fades and normalization reach players who use their own mix. Saved personal volumes are reset once on each client.
+
+### Fixed
+
+- Pressing Previous during a crossfade no longer dips the returning track to silence before fading it back in. It continues from its current volume.
+- The last track of a playlist with Loop Entire Playlist off could be faded out twice and then jump back to the first track as it ended. The fade now runs once and the playlist stops.
+- Two quick changes on different personal-mix sliders both save; before, only the last one did.
+- Currently Playing no longer jumps back to an older scroll position after the list was scrolled to the top.
+- With Playlist Enchantment active, the Currently Playing timer no longer raises a libWrapper error every second while a track plays.
+
+### Removed
+
+- The `api.requestClientDiagnostics()` call and its comparison window. Client snapshots for troubleshooting now travel over Foundry's own authenticated user queries, which the Enable MCP Diagnostics tooling uses; the module's socket carries only soundscape events.
+
 ## [14.15.7] - 2026-11-07
 
 This is the last release that supports Foundry V13. From the next release on, The Sound of Silence will require Foundry V14.
