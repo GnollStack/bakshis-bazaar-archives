@@ -4,6 +4,26 @@
 
 ## Unreleased
 
+### Added
+
+- Feature Items. Class features, monster traits and feats import from strict YAML (`FEAT`), lightweight YAML (`type: feat`) and pasted text, with feature type and subtype, limited uses and recovery, prerequisites, and activities and effects through the optional Activity Importer. A **Strict Feat Template** and the `core-feat` and `full-midi-feat` examples are bundled.
+- Feature advancement. A feat's `ADVANCEMENT` list builds dnd5e Ability Score Improvement, Grant Items, Choose Items, Modify Items, Scale Value and Trait advancements, so an imported feat applies its bonuses, spells, items and proficiencies when dropped on a character. Exports include advancement, and the `full-native-feat` example shows every entry type.
+- Container contents. A `CONTAINER` can nest its contents under `CONTENTS` (bags inside bags, up to dnd5e's depth limit), and any physical item can name its container with `INVENTORY.Container` (a container in the same batch, or an existing one by name or UUID). Children are placed inside the container in the sidebar and on actors; the `full-native-container` example shows a nested pack.
+- Document references by name. Granted items, choice pools, recommended items and containers resolve automatically when one world or compendium document matches the name or identifier. Anything unresolved or ambiguous gets a drop zone with a candidate list; drag a document onto it to choose. Import stays disabled until every reference is resolved, and `api.import()` reports the missing ones instead of creating a partial item.
+- Combat recovery periods (`initiative`, `turnStart`, `turnEnd`, `turn`) for limited uses, alongside the rest periods.
+
+### Changed
+
+- Item YAML schema is now 6. Older YAML still imports unchanged; exports write the new version.
+- Full-Item attachments (activities and effects) now pair with Activity Importer 14.3.0 or later, so update both importers together. Items import without the companion as before; older companion versions are told what to update.
+- MIDI-QOL and DAE settings now follow MIDI-QOL 14.6.8 and DAE 14.6.6.
+- Exporting a world or actor container as Full or Core Item YAML nests its contents under `CONTENTS`. A compendium container exports without contents, and exporting its items as a batch keeps their `INVENTORY.Container` references.
+- Templates, examples, the field catalog and the import-window guide cover the new sections. The template picker offers a **Feature (Core Fields)** quick start.
+
+### Fixed
+
+- Exporting a complete Item with activities failed while MIDI-QOL 14.6.8 was active.
+
 ## [14.2.1] - 2026-11-01
 
 ### Changed

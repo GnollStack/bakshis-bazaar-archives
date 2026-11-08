@@ -4,6 +4,24 @@
 
 ## Unreleased
 
+### Added
+
+- Teleport activities. `ACTIVITY_TELEPORT` builds the D&D 5e 6 teleport activity with its own distance and units or the activity's range, so the chat card offers the Teleport button. Base and MIDI-QOL **Teleport** templates and the `base-teleport` and `midi-teleport` examples are bundled.
+- Condition effects. A standalone effect with `Effect Type: condition` creates a dnd5e condition effect (poisoned, frightened, exhaustion and the rest) with its condition type and, for leveled conditions, its level. Status conditions default to the chosen condition. The `base-effect-condition` example shows a transferring poison effect.
+- Every strict template includes the new fields, and the MIDI quick-start list offers the MIDI Teleport template.
+- MIDI-QOL 14.6.8 settings in `AUTOMATION`: follow-up buttons (`followUp`, `followUpTargets`, `followUpCondition`), **Targets you can see**, **Statuses Applied**, regions that move each turn, ammunition per target for attacks, and the Midi Teleport settings of Teleport activities (who teleports, when, blocked destinations and whether the destination must be seen). They import, export, preview and compare like the other MIDI-QOL settings.
+
+### Changed
+
+- Strict activity and effect YAML now uses serialization schema 5 (twelve activity types and the base, enchantment and condition effect types). Older YAML still imports unchanged; exports write the new version.
+- Full-Item workflows need Item Importer 14.3.0 or later, so update both importers together. Activities and effects import onto Items without the companion as before.
+- MIDI-QOL and DAE settings now follow MIDI-QOL 14.6.8 and DAE 14.6.6.
+- Applied effects on activities stay base effects, as dnd5e defines them; a condition effect is created on the Item itself and reaches the actor through **Apply Effect to Actor**. Bastion Order activities are not supported.
+
+### Fixed
+
+- Exporting an activity or a complete Item failed while MIDI-QOL 14.6.8 was active.
+
 ## [14.2.1] - 2026-11-01
 
 ### Added
