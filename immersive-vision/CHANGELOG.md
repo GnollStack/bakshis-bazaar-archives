@@ -4,6 +4,28 @@
 
 ## Unreleased
 
+### Added
+
+- Perceptive integration. With Perceptive active, IVFX decides how bright it is where a token stands for Perceptive's stealth and perception checks. Daylight through openings, moonlight, magical darkness, and darkness Regions now count the way you see them on the canvas. Each viewer's senses decide what they perceive: by default darkvision sees darkness and dim light as bright within its range, truesight, blindsight, and tremorsense see clearly within theirs, and a vision profile with strong light amplification sees dim light as bright. Perceptive keeps its rolls, DCs, spotting, and peeking. GMs find the options under **Perceptive Integration** in the module settings, including a D&D 5e vision rules option and an off switch. Verified with Perceptive 6.0.9; other Perceptive 6 versions run with a warning, and other versions are left alone.
+- Vision Rules, a new window in the module settings. Turn on **Vision Authority** (then reload every client) and IVFX decides what each token sees: the light that reaches a target, the viewer's light sensitivity, and its darkvision. This works in both directions. A creature with sensitive eyes can now spot a target in faint light that Foundry's rules would hide, and a target in the dark stays hidden from eyes that can't see it. Midi-QOL, Stealthy, Limits, and Perceptive keep working on top. Off by default.
+- Darkvision as a magical sense. Each vision profile has a **Darkvision** setting: None, From Character Sheet, Within Token Vision Range, or Unlimited. With Vision Authority on, only tokens with a vision profile get darkvision, and a token's vision range follows its darkvision, so natural eyes see only by light. Unlimited darkvision reaches past the sheet's range, including inside Limits Regions. Both rules can be set on or off separately.
+- A **Dwarf** preset, with darkvision from the character sheet.
+- **GM Tokens Don't Save Fog of War**, off by default. When on, tokens no player owns still see when you select them, but what they see isn't added to your fog of war, which saves frame rate while they move. Turn on **Remember Fog of War** in a token's Vision tab for the ones that should remember. Players' fog of war isn't affected. **Clear My GM Fog of War** in the module settings clears only your own fog of war in the current scene.
+- Gradual fade. With Vision Authority on, creatures that are only just visible in faint light are drawn faint and become clearer as the light or the viewer's eyes improve. Their eyeshine stays bright. You can set the faintest opacity, or turn the fade off.
+
+### Changed
+
+- **Total-Darkness Sight** is replaced by the **Darkvision** setting. Profiles and tokens that had it on now use Within Token Vision Range, so they see the same as before; the others follow the character sheet, as before. The old night-vision glow is now called **Night-Vision Look** and no longer grants sight in the dark. The Human, Canid, Felid, Owl, and Ungulate presets have no darkvision.
+- Vision 5e is no longer supported. It replaces Foundry's visibility checks, so while it is active Vision Authority stays off and IVFX only draws. GMs see a warning when both are active.
+- The vision mechanics observer now reports each token's darkvision from its vision profile and the world's profiles, never the GM's own default settings.
+- Token moves cost less. IVFX now remembers how lit each spot is until the lighting changes, instead of working it out again every frame. In my 120-token test scene the slowest frame of an animated move is now about the same as without IVFX, where it used to be about 14 ms slower. With Vision Authority on, turns and single moves cost the same as Foundry's own vision, and an animated move about a fifth more.
+- Verified on Foundry 14.370, and tested with dnd5e 6.1.0.
+
+### Fixed
+
+- Players now see eyeshine on a hidden creature that Perceptive shows them after they spot it, faded like the creature itself.
+- Outdoor light through a cave opening now updates when walls change the shape of a wall-restricted Region, or when its wall restriction is turned on or off. Before, the light kept the old shape until the scene was redrawn.
+
 ## [14.4.0] - 2026-11-05
 
 ### Changed
