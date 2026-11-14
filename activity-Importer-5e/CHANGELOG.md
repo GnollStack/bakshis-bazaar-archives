@@ -6,6 +6,35 @@
 
 ### Added
 
+- D&D 5e 6.1 support. The importer is verified on Foundry 14.370 with dnd5e 6.0.6 and 6.1.0.
+- Enchantment riders on the effect (dnd5e 6.1). An enchantment effect's `EFFECT_SYSTEM` takes `Rider Activities`, `Rider Effects` and `Rider Items`. On dnd5e 6.0, use the Enchant activity's `APPLICATION` riders, which work on both versions.
+- Antimagic areas (dnd5e 6.1). `APPLIED_BEHAVIORS` accepts `Type: antimagic`, as Antimagic Field uses.
+- Ring areas (`Template Type: ring`), the "until dispelled" durations (`disp` and `dstr`) in every template, and the dnd5e 6.1 statuses `antimagic` and `fleeing`.
+- MIDI-QOL 14.6.11 settings in `AUTOMATION`: the **Floor** template origin, the **Remove Effect** area rule, and the rules-text link MIDI-QOL keeps on its sample Items.
+- Templates written for LLMs. Every template opens with **At a glance** (when to use it and the smallest block that works), maps rules wording to YAML fields in **From source text to YAML**, and follows its example with **Check before you answer**. The generation guide has a table for picking the template.
+
+### Changed
+
+- Strict activity and effect YAML now uses serialization schema 6. Older YAML still imports unchanged; exports write the new version.
+- Full-Item workflows need Item Importer 14.4.0 or later, so update both importers together.
+- MIDI-QOL and DAE settings now follow MIDI-QOL 14.6.11 and DAE 14.6.9. MIDI-QOL 14.6.11 does not load on dnd5e 6.1, so the MIDI templates need dnd5e 6.0.6 for now.
+- A status registered by the running system or by another module no longer shows an "unknown status" warning.
+- `Change Type` accepts the core types in any letter case, so `Add` is read as `add`.
+- Corrected template tables that still showed older field names or wrong values.
+
+### Fixed
+
+- A Save or Check with a fixed DC (`DC Calculation: custom`) rolled against the user's own ability DC instead of the number in `DC Formula`. Import affected activities again, or set **DC Calculation** to **Custom Formula** on the activity sheet.
+- A Cast activity with `Casting Ability: spellcasting` stored that word instead of dnd5e's default, so the cast spell could use the wrong ability.
+- Exporting an enchantment effect failed on dnd5e 6.1.
+- Exporting an effect failed when dnd5e's own data migration had left an empty rider flag or a folder reference on it.
+- A MIDI-QOL Save lost its critical damage settings unless the activity also had a `MIDI SAVE FIELDS` section.
+- The field catalog reported itself out of date on any build other than Foundry 14.369 with dnd5e 6.0.6.
+
+## [14.3.0] - 2026-11-07
+
+### Added
+
 - Teleport activities. `ACTIVITY_TELEPORT` builds the D&D 5e 6 teleport activity with its own distance and units or the activity's range, so the chat card offers the Teleport button. Base and MIDI-QOL **Teleport** templates and the `base-teleport` and `midi-teleport` examples are bundled.
 - Condition effects. A standalone effect with `Effect Type: condition` creates a dnd5e condition effect (poisoned, frightened, exhaustion and the rest) with its condition type and, for leveled conditions, its level. Status conditions default to the chosen condition. The `base-effect-condition` example shows a transferring poison effect.
 - Every strict template includes the new fields, and the MIDI quick-start list offers the MIDI Teleport template.

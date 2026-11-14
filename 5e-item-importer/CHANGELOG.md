@@ -6,6 +6,36 @@
 
 ### Added
 
+- D&D 5e 6.1 support. The importer is verified on Foundry 14.370 with dnd5e 6.0.6 and 6.1.0.
+- Food properties. A consumable's `FOOD_PROPERTIES` section sets **Hydrating** and **Nutritious** (dnd5e 6.1).
+- `PROPERTIES.Unidentified Contents` for containers.
+- The `wondrous` consumable type, ring areas for spells, and the `lineage` subtype for species features.
+- Templates written for LLMs. Every template opens with **At a glance** (when to use it and the smallest document that works), maps rules wording to YAML fields in **From source text to YAML**, and follows its example with **Check before you answer**. The generation guide has a table for picking the template.
+
+### Changed
+
+- Item YAML schema is now 7. Older YAML still imports unchanged; exports write the new version.
+- Full-Item attachments (activities and effects) now pair with Activity Importer 14.4.0 or later, so update both importers together.
+- MIDI-QOL and DAE settings now follow MIDI-QOL 14.6.11 and DAE 14.6.9.
+- Export keeps every stored item property. One without a field of its own is written under `CUSTOM_PROPERTIES`.
+- `Base Weapon: Hand Crossbow` is read as `handcrossbow`, and a base weapon or armor that dnd5e does not know shows a warning.
+- The warnings for an unknown spell range unit, duration unit, target type or area shape now say that the value is stored as written.
+- Corrected template tables and examples, including mundane examples that used common rarity.
+
+### Fixed
+
+- Exporting an Item with no limited uses failed with a "Uses Max" error. Most Items made on the sheet or taken from the SRD compendiums were affected.
+- Full export failed for an Item whose activity applies an effect from another document, such as a compendium effect.
+- Full export of an Item with an enchantment failed on dnd5e 6.1.
+- Exporting an Item failed after MIDI-QOL 14.6.9 or later had stored its rules-text link on it.
+- A consumable of type `wondrous` could be exported but not imported.
+- A scroll's older `verbal` property was left out of the export.
+- A Feature Subtype written without a Feature Type gave no warning.
+
+## [14.3.0] - 2026-11-07
+
+### Added
+
 - Feature Items. Class features, monster traits and feats import from strict YAML (`FEAT`), lightweight YAML (`type: feat`) and pasted text, with feature type and subtype, limited uses and recovery, prerequisites, and activities and effects through the optional Activity Importer. A **Strict Feat Template** and the `core-feat` and `full-midi-feat` examples are bundled.
 - Feature advancement. A feat's `ADVANCEMENT` list builds dnd5e Ability Score Improvement, Grant Items, Choose Items, Modify Items, Scale Value and Trait advancements, so an imported feat applies its bonuses, spells, items and proficiencies when dropped on a character. Exports include advancement, and the `full-native-feat` example shows every entry type.
 - Container contents. A `CONTAINER` can nest its contents under `CONTENTS` (bags inside bags, up to dnd5e's depth limit), and any physical item can name its container with `INVENTORY.Container` (a container in the same batch, or an existing one by name or UUID). Children are placed inside the container in the sidebar and on actors; the `full-native-container` example shows a nested pack.
