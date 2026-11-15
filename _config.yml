@@ -30,6 +30,8 @@ relative_links:
 exclude:
   - LICENSE
   - tools/
+  # Chatbot files, downloaded from the GitHub folder; they are not site pages.
+  - importer-llm-pack/
 
 # Navigation. Each module's README is its page. Its CHANGELOG.md and any
 # guides/*.md are listed under it, so each module needs the three entries below.

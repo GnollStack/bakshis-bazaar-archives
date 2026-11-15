@@ -12,6 +12,7 @@
 - Ring areas (`Template Type: ring`), the "until dispelled" durations (`disp` and `dstr`) in every template, and the dnd5e 6.1 statuses `antimagic` and `fleeing`.
 - MIDI-QOL 14.6.11 settings in `AUTOMATION`: the **Floor** template origin, the **Remove Effect** area rule, and the rules-text link MIDI-QOL keeps on its sample Items.
 - Templates written for LLMs. Every template opens with **At a glance** (when to use it and the smallest block that works), maps rules wording to YAML fields in **From source text to YAML**, and follows its example with **Check before you answer**. The generation guide has a table for picking the template.
+- The [Importer LLM Pack](https://github.com/GnollStack/bakshis-bazaar-archives/tree/main/importer-llm-pack/14.4.0): a set of files for Claude Projects, ChatGPT Projects or any other chatbot that teaches it to write complete Items with their activities and effects, with the effect keys of dnd5e 6, an optional MIDI-QOL layer and worked examples from rules text to finished YAML.
 - Warnings for unknown keys. A misspelled or misplaced section or field in an `ACTIVITY_*` or `EFFECT` block used to be skipped without a message. **Preview** now lists every key the importer did not read, with its full path, and suggests the expected name when only capitals, spaces or underscores differ (`MIDI_CONDITIONS` for `MIDI CONDITIONS`). The rest of the block still imports. With Item Importer, the same warning appears for the inline activities and effects of a complete Item.
 
 ### Changed

@@ -11,6 +11,7 @@
 - `PROPERTIES.Unidentified Contents` for containers.
 - The `wondrous` consumable type, ring areas for spells, and the `lineage` subtype for species features.
 - Templates written for LLMs. Every template opens with **At a glance** (when to use it and the smallest document that works), maps rules wording to YAML fields in **From source text to YAML**, and follows its example with **Check before you answer**. The generation guide has a table for picking the template.
+- The [Importer LLM Pack](https://github.com/GnollStack/bakshis-bazaar-archives/tree/main/importer-llm-pack/14.4.0): a set of files for Claude Projects, ChatGPT Projects or any other chatbot that teaches it to write Items for this module, with setup steps, the files to upload for your modules, and worked examples from rules text to finished YAML.
 
 ### Changed
 
