@@ -357,6 +357,7 @@ The user may paste back messages from the preview. Fix exactly what they name an
 | `Unknown key "X" in SECTION; it will be ignored.` | The same, in an Item section. A suggestion after it names the right key. |
 | `Cast requires a spell Item UUID before import; resolve the spell drop zone.` | Expected when the spell is named by `Item Name`. The user picks the spell in the import window; change nothing. |
 | `MIDI-QOL is not active in this world, so 2 MIDI-QOL settings will be left out: ...` (or `is not installed`, or `does not run on dnd5e ...`) | MIDI-QOL cannot store those settings in their world, so the window imports the rest without them. Nothing is broken; if the user wants YAML for this world, answer with the same YAML without its `AUTOMATION` sections. |
+| `Loot Type is empty (''), so the Item is stored without one, as dnd5e allows.` (or `Weapon Type`, `Base Weapon`, `Poison Type` and other fields) | The YAML has an empty value, as an export of an Item stored without one does. Fill in the value the source calls for from the field reference; leave it empty only when the user wants it so. |
 | `5e-activity-importer module is not active. Skipping inline activities/effects.` | The user has only 5e Item Importer. The core Item imports; offer a core Item without `Activities` and `effects`. |
 | a message that a value is not allowed, or that a required field is missing | Use one of the values the field reference lists, or add the field. |
 

@@ -46,6 +46,7 @@
 - An exported Heal without an amount, Damage activity without a part, or Summon or Transform without a profile could not be imported again. dnd5e's own Spare the Dying, Regeneration and Iron Flask are stored that way. They now import as stored, with a warning. Leaving the section out is still an error.
 - An effect change row with an empty key, as dnd5e's own Boots of Elvenkind has, was dropped on import.
 - A Cast activity stored its fixed `Save DC` and `Attack Bonus` as numbers where dnd5e keeps text, so importing showed "Schema cleaning would coerce" warnings for them.
+- **Choose by UUID** and saving a preset did nothing in Foundry's desktop app, which does not support the browser's text prompt. Both now ask in a Foundry dialog.
 - An activity `Description` or `Chat Description` written as a YAML block (`|`) showed a "Schema cleaning would coerce" warning, because the block's last line break is removed when dnd5e saves it. Both are now stored trimmed, as dnd5e keeps them.
 ## [14.3.0] - 2026-11-07
 

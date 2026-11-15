@@ -26,6 +26,7 @@
 - Corrected template tables and examples, including mundane examples that used common rarity.
 - With Activity Importer 14.4.0, a misspelled or misplaced key inside an inline activity or effect is listed as a warning in the preview. It used to be skipped without a message.
 - The `full-midi-weapon` and `full-midi-feat` examples write their MIDI-QOL settings in the `AUTOMATION` section, the form Activity Importer 14.4.0 teaches and exports. They import to the same data as before.
+- Parse errors and warnings no longer pop up one by one; the preview lists them, so a batch no longer fills the screen. They are still written to the browser console.
 - With Activity Importer 14.4.0, a complete Item whose inline activities hold MIDI-QOL settings imports where MIDI-QOL is not active. The activities are created without those settings, and one notice in **Activities & Effects** lists what is left out.
 
 ### Fixed
@@ -39,8 +40,9 @@
 - A Feature Subtype written without a Feature Type gave no warning.
 - The `full-midi-weapon` and `full-midi-feat` examples wrote `APPLICATION.Save On Save` where the importer reads `APPLICATION.On Save`.
 - A list entry that holds a colon and has no quotes, such as `- class:wizard` or a web address, was read as a mapping. Inside an inline activity it was stored as `[object Object]`.
+- An exported Item could not be imported again when dnd5e stores it without a type, base weapon, subtype, ammunition type, base tool or Armor Class. dnd5e's own Paper, Unarmed Strike, Antitoxin, Helm of Brilliance and about 130 more compendium Items are stored that way. The export now writes such a value as empty, and an empty value imports as stored, with a warning. Leaving the field out is still an error.
 - A weapon or tool imported with its own Attack or Check activity kept dnd5e's automatic one as well when the preview showed any warning, such as an unknown key, so the Item ended up with two. Only a failed import keeps the automatic activity now.
-- Importing a bag or other container showed a warning that the icon folder `icons/commodities/bags` could not be browsed. The automatic icon search now skips a folder that this Foundry version does not have.
+- Importing a bag or other container showed a warning that the icon folder `icons/commodities/bags` could not be browsed. The automatic icon search now skips a folder that this Foundry version does not have, and its folder lists for wands, rods, art tools, containers, gems and junk now name folders that Foundry 14 has.
 
 ## [14.3.0] - 2026-11-07
 
