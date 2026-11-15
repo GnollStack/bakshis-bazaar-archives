@@ -27,6 +27,9 @@
 - A status registered by the running system or by another module no longer shows an "unknown status" warning.
 - `Change Type` accepts the core types in any letter case, so `Add` is read as `add`.
 - Corrected template tables that still showed older field names or wrong values.
+- `Active Effect Keys V2.txt` and the Effect templates now list the effect keys of dnd5e 6, each checked against dnd5e's own actor data, with a table of the older keys and what to write instead. The MIDI-QOL, DAE and macro keys moved to the MIDI Effect template and were checked against MIDI-QOL 14.6.11; keys it no longer registers were removed.
+- The "effect-based transformation" recipe uses the dnd5e 6 key for walking speed.
+- Clearer template guidance: effects that last until the end of your next turn (`Effect Expiry: sourceEnd`), MIDI-QOL's other activity running only on the targets an attack hit, and `Modifiers` being the one damage field you can leave out.
 
 ### Fixed
 
@@ -39,7 +42,8 @@
 - A list entry that holds a colon, such as `- class:wizard` under `Retained Spell Lists`, was read as a mapping and stored as `[object Object]`. The same happened to such a value inside a complete Item and in an export that was imported again.
 - An exported Heal without an amount, Damage activity without a part, or Summon or Transform without a profile could not be imported again. dnd5e's own Spare the Dying, Regeneration and Iron Flask are stored that way. They now import as stored, with a warning. Leaving the section out is still an error.
 - An effect change row with an empty key, as dnd5e's own Boots of Elvenkind has, was dropped on import.
-
+- A Cast activity stored its fixed `Save DC` and `Attack Bonus` as numbers where dnd5e keeps text, so importing showed "Schema cleaning would coerce" warnings for them.
+- An activity `Description` or `Chat Description` written as a YAML block (`|`) showed a "Schema cleaning would coerce" warning, because the block's last line break is removed when dnd5e saves it. Both are now stored trimmed, as dnd5e keeps them.
 ## [14.3.0] - 2026-11-07
 
 ### Added

@@ -36,6 +36,8 @@
 - A Feature Subtype written without a Feature Type gave no warning.
 - The `full-midi-weapon` and `full-midi-feat` examples wrote `APPLICATION.Save On Save` where the importer reads `APPLICATION.On Save`.
 - A list entry that holds a colon and has no quotes, such as `- class:wizard` or a web address, was read as a mapping. Inside an inline activity it was stored as `[object Object]`.
+- A weapon or tool imported with its own Attack or Check activity kept dnd5e's automatic one as well when the preview showed any warning, such as an unknown key, so the Item ended up with two. Only a failed import keeps the automatic activity now.
+- Importing a bag or other container showed a warning that the icon folder `icons/commodities/bags` could not be browsed. The automatic icon search now skips a folder that this Foundry version does not have.
 
 ## [14.3.0] - 2026-11-07
 

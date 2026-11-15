@@ -158,7 +158,7 @@ ACTIVITY_SAVE: # or any other ACTIVITY_* root key
 | `useConditionText` | Condition expression that must be true to allow use. Uses MIDI-QOL condition syntax. Stored, never evaluated by the importer. | Text. |
 | `useConditionReason` | Message shown when the use condition fails. | Text. |
 | `effectConditionText` | Condition expression that must be true for the applied effects to activate. | Text. |
-| `otherActivityId` | Another activity of the same Item that MIDI-QOL rolls together with this one. It must be a Save, Check, Damage, Heal or Utility activity with `midiProperties.otherActivityCompatible: true`. | `""` = MIDI-QOL chooses, `none` = off, a local activity id, or a local activity identifier. |
+| `otherActivityId` | Another activity of the same Item that MIDI-QOL rolls together with this one. It must be a Save, Check, Damage, Heal or Utility activity with `midiProperties.otherActivityCompatible: true`. On an attack, it runs only for the targets the attack hit, so a save or extra damage that follows a hit goes here. | `""` = MIDI-QOL chooses, `none` = off, a local activity id, or a local activity identifier. |
 | `macroData.name` | Name of the activity macro. | Text; `""` when unnamed. |
 | `macroData.command` | Macro code stored with the activity. MIDI-QOL runs it only when its own configuration calls for it; the importer never runs it. | Multiline text. |
 | `ignoreTraits.idi`, `.idr`, `.idv`, `.ida`, `.idm` | The activity's damage ignores a whole category of the target's damage traits: immunity (`idi`), resistance (`idr`), vulnerability (`idv`), absorption (`ida`) or modification (`idm`). | `true` or `false`. |
@@ -1352,6 +1352,172 @@ EFFECT:
 | `dae.expiryMode` | What happens when the effect expires. | `default` = the world's setting, `delete`, `suppress` = keep it and mark it expired. |
 | `dae.specialDuration` | Events that end the effect early. Turn starts, turn ends and rests are covered by the Base field `DURATION.Effect Expiry`. | A list such as `[1Attack]` or `[1Attack, isDamaged]`; `[]` for none. Ids: `1Action`, `Bonus Action`, `Reaction`, `Turn Action`, `1Spell`, `1Attack`, `1Hit`, `1Critical`, `1Fumble`, `1Reaction`, `DamageDealt`, `isAttacked`, `isDamaged`, `isHealed`, `zeroHP`, `isHit`, `isHitCritical`, `isSave`, `isSaveSuccess`, `isSaveFailure`, `isConcentrationSave`, `isConcentrationSaveFail`, `isConcentrationSaveSuccess`, `isCheck`, `isSkill`, `isInitiative`, `isMoved`, `longRest`, `shortRest`, `newDay`. `1Attack` and `1Hit` take an attack type (`1Attack:mwak`, `:rwak`, `:msak`, `:rsak`); `isSave`, `isSaveSuccess`, `isSaveFailure` and `isCheck` take an ability (`isSave.dex`); `isDamaged` takes a damage type (`isDamaged.fire`); `isSkill` takes a skill (`isSkill.ste`). |
 | `core.overlay` | Draw the effect's icon as an overlay on the token. | `true` or `false`. |
+
+#### EFFECT with DAE values: MIDI-QOL, DAE and macro keys for CHANGES
+
+These `Attribute Key` values need MIDI-QOL or DAE active in the world; a `macro.*` key runs a macro and is written only when the user asks for one. Prefer a dnd5e key from "Effect keys" when it does the same job, because it also works without MIDI-QOL. Every key here was checked against the flags MIDI-QOL 14.6.11 and DAE 14.6.9 register in a live world (dnd5e 6.0.6, 2026-11-14). Replace every `{token}` with one id from the table before writing the key.
+
+#### EFFECT with DAE values: MIDI-QOL keys: token ids
+
+`{ability}` = str, dex, con, int, wis, cha
+
+`{skillId}` = acr, ani, arc, ath, dec, his, ins, inv, itm, med, nat, per, prc, prf, rel, slt, ste, sur
+
+`{toolId}` = alchemist, art, bagpipes, brewer, calligrapher, card, carpenter, cartographer, chess, cobbler, cook, dice, disg, drum, dulcimer, flute, forg, game, glassblower, herb, horn, jeweler, leatherworker, lute, lyre, mason, music, navg, painter, panflute, pois, potter, shawm, smith, thief, tinker, vehicle, viol, weaver, woodcarver
+
+`{attackType}` = all, heal, msak, mwak, other, rsak, rwak, save, util
+
+`{attackTypeExtended}` = {attackType} + check, skill, tool
+
+`{rollModAttackType}` = {attackType} + feat, spell, tool, weapon
+
+`{damageType}` = acid, all, bludgeoning, cold, fire, force, lightning, midi-none, necrotic, none, piercing, poison, psychic, radiant, slashing, thunder, vitality
+
+#### EFFECT with DAE values: MIDI-QOL keys: single keys
+
+| Name | Key |
+|---|---|
+| On Update Target | `flags.dae.onUpdateTarget` |
+| Activity Over Time | `flags.midi-qol.ActivityOverTime` |
+| Create Item | `macro.createItem` |
+| Create Item & Run Macro | `macro.createItemRunMacro` |
+| Macro to Execute | `macro.execute` |
+| Macro for GM to Execute | `macro.execute.GM` |
+| Macro to Execute Locally | `macro.execute.local` |
+| Execute ItemMacro/DIME | `macro.itemMacro` |
+| Execute ItemMacro/DIME as GM | `macro.itemMacro.GM` |
+| Execute ItemMacro/DIME Locally | `macro.itemMacro.local` |
+| Apply Status Effect | `macro.StatusEffect` |
+| Bonus Actions Max | `flags.midi-qol.actions.bonusActionsMax` |
+| Bonus Actions Reset | `flags.midi-qol.actions.bonusActionsReset` |
+| Reactions Max | `flags.midi-qol.actions.reactionsMax` |
+| Reactions Reset | `flags.midi-qol.actions.reactionsReset` |
+| Advantage All Ability | `flags.midi-qol.advantage.ability.all` |
+| Advantage All | `flags.midi-qol.advantage.all` |
+| Advantage (Concentration) | `flags.midi-qol.advantage.concentration` |
+| Advantage (Death Save) | `flags.midi-qol.advantage.deathSave` |
+| Careful Spells | `flags.midi-qol.carefulSpells` |
+| Damage Reroll (Keep Highest) | `flags.midi-qol.damage.reroll-kh` |
+| Damage Reroll (Keep Lowest) | `flags.midi-qol.damage.reroll-kl` |
+| Disadvantage (All Abilities) | `flags.midi-qol.disadvantage.ability.all` |
+| Disadvantage All | `flags.midi-qol.disadvantage.all` |
+| Disadvantage (Concentration) | `flags.midi-qol.disadvantage.concentration` |
+| Disadvantage (Death Save) | `flags.midi-qol.disadvantage.deathSave` |
+| Fail (All Abilities) | `flags.midi-qol.fail.ability.all` |
+| Fail (All Actions) | `flags.midi-qol.fail.all` |
+| Fail (Material Component) | `flags.midi-qol.fail.spell.material` |
+| Fail (Somatic Component) | `flags.midi-qol.fail.spell.somatic` |
+| Fail (Vocal Component) | `flags.midi-qol.fail.spell.vocal` |
+| Critical Hit Threshold (grants) | `flags.midi-qol.grants.criticalThreshold` |
+| Ignore Nearby Foes | `flags.midi-qol.ignoreNearbyFoes` |
+| Initiative Advantage | `flags.midi-qol.initiativeAdv` |
+| Initiative Disadvantage | `flags.midi-qol.initiativeDisadv` |
+| No Advantage (Initiative) | `flags.midi-qol.initiativeNoAdv` |
+| No Disadvantage (Initiative) | `flags.midi-qol.initiativeNoDisadv` |
+| In Motion | `flags.midi-qol.inMotion` |
+| Never Target | `flags.midi-qol.neverTarget` |
+| No Advantage (All Rolls) | `flags.midi-qol.noAdvantage.all` |
+| No Advantage (Concentration) | `flags.midi-qol.noAdvantage.concentration` |
+| No Advantage (Death Save) | `flags.midi-qol.noAdvantage.deathSave` |
+| No Disadvantage (All Rolls) | `flags.midi-qol.noDisadvantage.all` |
+| No Disadvantage (Concentration) | `flags.midi-qol.noDisadvantage.concentration` |
+| No Disadvantage (Death Save) | `flags.midi-qol.noDisadvantage.deathSave` |
+| Over Time Effects | `flags.midi-qol.OverTime` |
+| Potent Cantrip | `flags.midi-qol.potentCantrip` |
+| Sculpt Spells | `flags.midi-qol.sculptSpells` |
+| Success (All Ability Rolls) | `flags.midi-qol.success.ability.all` |
+| Success (All Rolls) | `flags.midi-qol.success.all` |
+| Uncanny Dodge | `flags.midi-qol.uncanny-dodge` |
+
+#### EFFECT with DAE values: MIDI-QOL keys: patterns
+
+**MIDI-QOL:**
+- `flags.midi-qol.DR.{damageType}`  -  Damage reduction
+- `flags.midi-qol.advantage.attack.{attackType}`
+- `flags.midi-qol.advantage.check.{ability}`
+- `flags.midi-qol.advantage.save.{ability}`
+- `flags.midi-qol.advantage.skill.{skillId|ability}`
+- `flags.midi-qol.advantage.tool.{toolId}`
+- `flags.midi-qol.critical.{attackType}`
+- `flags.midi-qol.disadvantage.attack.{attackType}`
+- `flags.midi-qol.disadvantage.check.{ability}`
+- `flags.midi-qol.disadvantage.save.{ability}`
+- `flags.midi-qol.disadvantage.skill.{skillId|ability}`
+- `flags.midi-qol.disadvantage.tool.{toolId}`
+- `flags.midi-qol.fail.critical.{attackType}`
+- `flags.midi-qol.fumble.{attackType}`
+- `flags.midi-qol.grants.advantage.attack.{attackTypeExtended}`
+- `flags.midi-qol.grants.advantage.check.{ability}`
+- `flags.midi-qol.grants.advantage.save.{ability}`
+- `flags.midi-qol.grants.advantage.skill.{skillId|ability}`
+- `flags.midi-qol.grants.advantage.tool.{toolId}`
+- `flags.midi-qol.grants.attack.bonus.{attackType}`
+- `flags.midi-qol.grants.attack.fail.{attackType}`
+- `flags.midi-qol.grants.attack.success.{attackType}`
+- `flags.midi-qol.grants.bonus.damage.{attackType}`
+- `flags.midi-qol.grants.critical.{attackType}`
+- `flags.midi-qol.grants.disadvantage.attack.{attackTypeExtended}`
+- `flags.midi-qol.grants.disadvantage.check.{ability}`
+- `flags.midi-qol.grants.disadvantage.save.{ability}`
+- `flags.midi-qol.grants.disadvantage.skill.{skillId|ability}`
+- `flags.midi-qol.grants.disadvantage.tool.{toolId}`
+- `flags.midi-qol.grants.fumble.{attackType}`
+- `flags.midi-qol.grants.max.damage.{attackType}`
+- `flags.midi-qol.grants.min.damage.{attackType}`
+- `flags.midi-qol.grants.noAdvantage.attack.{attackTypeExtended}`
+- `flags.midi-qol.grants.noAdvantage.check.{ability}`
+- `flags.midi-qol.grants.noAdvantage.save.{ability}`
+- `flags.midi-qol.grants.noAdvantage.skill.{skillId|ability}`
+- `flags.midi-qol.grants.noAdvantage.tool.{toolId}`
+- `flags.midi-qol.grants.noCritical.{attackType}`
+- `flags.midi-qol.grants.noDisadvantage.attack.{attackTypeExtended}`
+- `flags.midi-qol.grants.noDisadvantage.check.{ability}`
+- `flags.midi-qol.grants.noDisadvantage.save.{ability}`
+- `flags.midi-qol.grants.noDisadvantage.skill.{skillId|ability}`
+- `flags.midi-qol.grants.noDisadvantage.tool.{toolId}`
+- `flags.midi-qol.grants.noFumble.{attackType}`
+- `flags.midi-qol.long.{attackType}`
+- `flags.midi-qol.magicResistance.{ability|all}`
+- `flags.midi-qol.magicVulnerability.{ability|all}`
+- `flags.midi-qol.max.damage.{attackType}`
+- `flags.midi-qol.min.damage.{attackType}`
+- `flags.midi-qol.noAdvantage.attack.{attackType}`
+- `flags.midi-qol.noAdvantage.check.{ability}`
+- `flags.midi-qol.noAdvantage.save.{ability}`
+- `flags.midi-qol.noAdvantage.skill.{skillId|ability}`
+- `flags.midi-qol.noAdvantage.tool.{toolId}`
+- `flags.midi-qol.noCritical.{attackType}`
+- `flags.midi-qol.noDisadvantage.attack.{attackType}`
+- `flags.midi-qol.noDisadvantage.check.{ability}`
+- `flags.midi-qol.noDisadvantage.save.{ability}`
+- `flags.midi-qol.noDisadvantage.skill.{skillId|ability}`
+- `flags.midi-qol.noDisadvantage.tool.{toolId}`
+- `flags.midi-qol.noFumble.{attackType}`
+- `flags.midi-qol.range.{attackType}`
+- `flags.midi-qol.rangeOverride.attack.{attackType}`
+- `flags.midi-qol.rollModifiers.attack.{rollModAttackType}`
+- `flags.midi-qol.rollModifiers.damage.{rollModAttackType}.{damageType}`
+- `flags.midi-qol.semiSuperSaver.{ability}`
+- `flags.midi-qol.superSaver.{ability}`
+
+**Optional Bonus Keys**  -  Replace `NAME` with a unique identifier. Creates player-prompted optional bonuses.
+- `flags.midi-qol.optional.NAME.attack.fail.{attackType}`
+- `flags.midi-qol.optional.NAME.attack.{attackType}`
+- `flags.midi-qol.optional.NAME.check.fail.{ability}`
+- `flags.midi-qol.optional.NAME.check.{ability}`
+- `flags.midi-qol.optional.NAME.damage.{attackType}`
+- `flags.midi-qol.optional.NAME.save.fail.{ability}`
+- `flags.midi-qol.optional.NAME.save.{ability}`
+- `flags.midi-qol.optional.NAME.skill.fail.all`
+- `flags.midi-qol.optional.NAME.skill.{skillId}`
+- `flags.midi-qol.optional.NAME.acOnAttack` (MIDI-QOL 14.6.9 renamed `optional.NAME.ac`; the old key still works with a deprecation warning)
+- `flags.midi-qol.optional.NAME.acOnHit`
+- `flags.midi-qol.optional.NAME.activation`
+- `flags.midi-qol.optional.NAME.count`
+- `flags.midi-qol.optional.NAME.countAlt`
+- `flags.midi-qol.optional.NAME.criticalDamage`
+- `flags.midi-qol.optional.NAME.force`
+- `flags.midi-qol.optional.NAME.label`
 
 ### EFFECT with DAE: example
 

@@ -21,7 +21,7 @@ Most activity types share the same sections for timing, cost, range, targets and
 | Range and target | Set Override Range/Override Target from intent. Their false state retains local data. Self range is a range choice, not an override toggle. |
 | Consumption | itemUses with an omitted Target Item/Material consumes the parent Item's uses. Supply a real eligible item reference for another Item. material needs an eligible material target; activityUses always consumes this activity's uses. Attribute, hit-die and slot targets require the matching resource context. |
 | Scaling | Activity SCALING only controls Allow Scaling/Max Scaling. Resource scaling belongs on each CONSUMPTION entry; damage/healing scaling belongs inside DAMAGE_DATA. |
-| Damage/healing | Use all ten DAMAGE_DATA fields when specifying that value explicitly. Do not combine populated formula shorthand with DAMAGE_DATA for the same part. An inactive Custom Formula or Scaling Formula can still be stored. |
+| Damage/healing | Write every DAMAGE_DATA field when specifying that value explicitly; only `Modifiers` may be left out, when the source names no reroll or minimum result. Do not combine populated formula shorthand with DAMAGE_DATA for the same part. An inactive Custom Formula or Scaling Formula can still be stored. |
 | Applied effects | APPLIED_EFFECTS creates and links effects for this activity. Apply Effect to Actor is the passive transfer flag, not a command to apply the effect to the activity's target; use false for ordinary applied effects. |
 | Effect timing | Use DURATION.Value/Units on effects. Leave generated start fields omitted for a newly authored effect; Start:null and populated start fields are mutually exclusive. |
 
@@ -231,7 +231,7 @@ Find the wording closest to the source and write the fields shown, inside the ac
 | "instantaneous", "for 1 minute", "concentration, up to 10 minutes", "until dispelled" | `DURATION.Override Duration: true`; `DURATION.Duration Time: minute`; `DURATION.Duration Amount: 10`; `DURATION.Concentration: true`. Instantaneous is `Duration Time: inst` with no amount. Until dispelled is `Duration Time: disp` |
 | "requires attunement", "while you are attuned to this item" | `VISIBILITY.Require Attunement: true` |
 | "starting at 5th level", "when you reach 11th level in this class" | `VISIBILITY.Level Limit Minimum: 5`. Add `VISIBILITY.Class Identifier: fighter` when the level is a class level |
-| "the target is poisoned for 1 minute", "has a -2 penalty to AC until the end of your next turn" | one `APPLIED_EFFECTS` entry with `DETAILS.Name`, `DETAILS.Apply Effect to Actor: false`, `DETAILS.Status Conditions: [poisoned]`, `DURATION.Value: 1` and `DURATION.Units: minutes`. Number changes go in that entry's `CHANGES` list |
+| "the target is poisoned for 1 minute", "has a -2 penalty to AC until the end of your next turn" | one `APPLIED_EFFECTS` entry with `DETAILS.Name` and `DETAILS.Apply Effect to Actor: false`. A condition goes in `DETAILS.Status Conditions` (`[poisoned]`), a number change in that entry's `CHANGES` list. For 1 minute: `DURATION.Value: 1` and `DURATION.Units: minutes`. Until the end of your next turn: `DURATION.Value: 1`, `DURATION.Units: rounds` and `DURATION.Effect Expiry: sourceEnd` (`sourceStart` for the start of your next turn) |
 | "the area is difficult terrain" | one `APPLIED_BEHAVIORS` entry with `Type: difficultTerrain` and `CONFIG.types: [ground]`. The activity needs an area in `TARGETS` |
 | "magic is suppressed in the area" (an antimagic field) | one `APPLIED_BEHAVIORS` entry with `Type: antimagic` and `CONFIG: {}`. This needs dnd5e 6.1 or later; dnd5e 6.0 rejects it |
 
@@ -1224,7 +1224,7 @@ CASTING_DETAILS.Item UUID must resolve to an accessible spell Item. Item Name is
 | Range and target | Set Override Range/Override Target from intent. Their false state retains local data. Self range is a range choice, not an override toggle. Cast has additional target behavior below. |
 | Consumption | itemUses with an omitted Target Item/Material consumes the parent Item's uses. Supply a real eligible item reference for another Item. material needs an eligible material target; activityUses always consumes this activity's uses. Attribute, hit-die and slot targets require the matching resource context. |
 | Scaling | Activity SCALING only controls Allow Scaling/Max Scaling. Resource scaling belongs on each CONSUMPTION entry; damage/healing scaling belongs inside DAMAGE_DATA. |
-| Damage/healing | Use all ten DAMAGE_DATA fields when specifying that value explicitly. Do not combine populated formula shorthand with DAMAGE_DATA for the same part. An inactive Custom Formula or Scaling Formula can still be stored. |
+| Damage/healing | Write every DAMAGE_DATA field when specifying that value explicitly; only `Modifiers` may be left out, when the source names no reroll or minimum result. Do not combine populated formula shorthand with DAMAGE_DATA for the same part. An inactive Custom Formula or Scaling Formula can still be stored. |
 | Applied effects | APPLIED_EFFECTS creates and links effects for this activity. Apply Effect to Actor is the passive transfer flag, not a command to apply the effect to the activity's target; use false for ordinary applied effects. |
 | Effect timing | Use DURATION.Value/Units on effects. Leave generated start fields omitted for a newly authored effect; Start:null and populated start fields are mutually exclusive. |
 
@@ -2032,6 +2032,7 @@ Find the wording closest to the source and write the fields shown. A path such a
 | "a bonus to saving throws equal to your Charisma modifier" | `CHANGES.Attribute Key: system.rolls.ability.save.bonus`; `CHANGES.Change Type: add`; `CHANGES.Value: "@abilities.cha.mod"` |
 | "the target is blinded for 1 minute" (an effect that an activity applies) | `DETAILS.Apply Effect to Actor: false`; `DETAILS.Status Conditions: [blinded]`; `DURATION.Value: 1`; `DURATION.Units: minutes` |
 | "until the start of the target's next turn" | `DURATION.Value: 1`; `DURATION.Units: rounds`; `DURATION.Effect Expiry: targetStart` |
+| "until the end of your next turn" (the turn of the creature that uses the activity) | `DURATION.Value: 1`; `DURATION.Units: rounds`; `DURATION.Effect Expiry: sourceEnd` (`sourceStart` for the start of your next turn, `targetEnd` for the end of the target's next turn) |
 | the Item gives its owner a dnd5e condition, for example "you are poisoned while you carry it" | `DETAILS.Effect Type: condition`; `DETAILS.Apply Effect to Actor: true`; `DETAILS.Status Conditions: [poisoned]`; `EFFECT_SYSTEM.Condition Type: poisoned`; `EFFECT_SYSTEM.Level: null` (`Level` is a number from 1 to 6 only for `exhaustion`) |
 | two activities on the Item apply the same effect | `DETAILS.Effect ID: sharedWard000001` (16 letters and digits that you choose); in each activity an `APPLIED_EFFECTS` entry that is only `Effect ID: sharedWard000001` |
 
@@ -2241,7 +2242,7 @@ EFFECT:
 
 1. Decide first who gets the effect. `Apply Effect to Actor: true` means the Item's owner has it all the time (a worn item, a feat, a trait). `false` means an activity applies it. Do not write `true` on an effect that an activity applies to a target. If you leave the field out, the effect is stored as passive.
 2. Every `CHANGES` row needs `Attribute Key`, `Change Type` and `Value`. A row without `Attribute Key` is dropped, and a row without `Change Type` is stored as `custom` and does nothing. Neither produces a warning.
-3. Take `Attribute Key` from this template's key list or from `Active Effect Keys V2.txt`, and replace every `{token}` (`system.skills.ste.roll.mode`, not `system.skills.{skillId}.roll.mode`). The parser does not check keys, so an invented path is imported and does nothing.
+3. Take `Attribute Key` from this template's key list or from `Active Effect Keys V2.txt`, and replace every `{token}` (`system.skills.ste.roll.mode`, not `system.skills.{skill}.roll.mode`). The parser does not check keys, so an invented path is imported and does nothing.
 4. Give `Value` its real type: a number without quotes (`Value: 2`), an id as plain text (`Value: fire`), a formula in quotes (`Value: "@prof"`). `n/a` is stored as the text n/a. Write one row per damage type or condition.
 5. `Change Type` is lower case: `add`, `override`, `upgrade`, `downgrade`, `multiply`, `subtract` or `custom`. Write `Change Phase: initial` unless the user supplies `final`. `Priority` may be left out; the examples use `20` with `add`.
 6. Effect duration uses `DURATION.Value` with a plural unit in `Units` (`rounds`, `minutes`, `hours`). `Units: minute` and `Value: 1 minute` are parse errors. Leave `DURATION` out for a passive effect.

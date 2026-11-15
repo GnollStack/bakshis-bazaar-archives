@@ -2,7 +2,11 @@
 
 Pack 14.4.0 (2026-11-14) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
 
-This file lists the `Attribute Key` values for the `CHANGES` of an effect on a creature: an `EFFECT` block, an entry of an Item's `effects` list, or an entry of an activity's `APPLIED_EFFECTS` list. Every `system.*` and `flags.dnd5e.*` key here was checked against the data of dnd5e 6.1.0, and the same keys exist in dnd5e 6.0.6. Use these keys; do not build a key from memory, because many keys from before dnd5e 6 no longer exist (see "Effect keys: old keys that no longer work"). An enchantment (`Effect Type: enchantment`, in `ACTIVITY_ENCHANT`) changes an Item instead of a creature and uses Item keys, which this file does not list.
+This file lists the effect keys of dnd5e 6 for the `CHANGES` of every effect: an `EFFECT` block, an `effects` entry or an `APPLIED_EFFECTS` entry. It is the same list as in 5e Activity Importer's Effect template.
+
+## Effect keys: the Attribute Key of a change
+
+These are the `Attribute Key` values for the `CHANGES` of an effect on a creature: an `EFFECT` block, an entry of an Item's `effects` list, or an entry of an activity's `APPLIED_EFFECTS` list. Every `system.*` and `flags.dnd5e.*` key here was checked against the actor data of dnd5e 6.1.0, and the same keys exist in dnd5e 6.0.6. Use these keys; do not build a key from memory, because many keys from before dnd5e 6 no longer exist (see "Effect keys: old keys that no longer work"). An enchantment (`Effect Type: enchantment`, in `ACTIVITY_ENCHANT`) changes an Item instead of a creature and uses Item keys, which this list does not cover.
 
 ## Effect keys: how to write one change
 
@@ -29,7 +33,7 @@ EFFECT:
 - Leave `Change Phase` and `Priority` out unless the user supplies them.
 - A condition such as frightened or prone is not a change: write it in `DETAILS.Status Conditions`.
 
-## Effect keys: placeholders in this file
+## Effect keys: placeholders
 
 Replace a placeholder with one id before writing the key. Never write the braces.
 
@@ -200,4 +204,4 @@ Keys from dnd5e before version 6 are common in older guides and in chatbots' mem
 
 ## Effect keys: MIDI-QOL and DAE keys
 
-`flags.midi-qol.*`, `flags.dae.*` and `macro.*` keys need MIDI-QOL or DAE and are described in 30-midi-qol-and-dae.md. Write them only when the user has those modules active, and prefer a key from this file when one does the same job.
+`flags.midi-qol.*`, `flags.dae.*` and `macro.*` keys need MIDI-QOL or DAE and are listed in 30-midi-qol-and-dae.md. Write them only when the user has those modules active, and prefer a key from this file when one does the same job.

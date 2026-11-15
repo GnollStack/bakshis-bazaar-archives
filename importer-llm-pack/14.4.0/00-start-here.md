@@ -304,7 +304,7 @@ Some fields point at a document that already exists. Name it; never make up its 
 - **Spells or Items a feature grants** (`FEAT` `ADVANCEMENT`): `Name` and `Type` of each, no UUID.
 - **A container in the same answer**: `INVENTORY.Container` with the container's name.
 - **Another activity on the same Item** (`ACTIVITY_FORWARD`): its exact `ACTIVITY.Name`.
-- **A creature to summon or a form to take** (`ACTIVITY_SUMMON`, `ACTIVITY_TRANSFORM` with a creature): ask the user for the creature's UUID; it cannot be named.
+- **A creature to summon or a form to take** (`ACTIVITY_SUMMON`, `ACTIVITY_TRANSFORM` with a creature): the profile's `Actor Name` with the creature's exact name and `Actor UUID: n/a`, unless the user gave the UUID. The preview shows a warning for it, and the import window asks the user to pick the creature before importing.
 - Never invent a UUID, a compendium name, a 16-character ID (`Activity ID`, `Effect ID`, `Behavior ID`) or a macro name. The one exception is the shared effect in "Composition: one effect shared by several activities".
 
 ## Start here: output rules
