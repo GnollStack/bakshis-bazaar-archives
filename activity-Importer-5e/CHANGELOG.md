@@ -14,6 +14,8 @@
 - Templates written for LLMs. Every template opens with **At a glance** (when to use it and the smallest block that works), maps rules wording to YAML fields in **From source text to YAML**, and follows its example with **Check before you answer**. The generation guide has a table for picking the template.
 - The [Importer LLM Pack](https://github.com/GnollStack/bakshis-bazaar-archives/tree/main/importer-llm-pack/14.4.0): a set of files for Claude Projects, ChatGPT Projects or any other chatbot that teaches it to write complete Items with their activities and effects, with the effect keys of dnd5e 6, an optional MIDI-QOL layer and worked examples from rules text to finished YAML.
 - Warnings for unknown keys. A misspelled or misplaced section or field in an `ACTIVITY_*` or `EFFECT` block used to be skipped without a message. **Preview** now lists every key the importer did not read, with its full path, and suggests the expected name when only capitals, spaces or underscores differ (`MIDI_CONDITIONS` for `MIDI CONDITIONS`). The rest of the block still imports. With Item Importer, the same warning appears for the inline activities and effects of a complete Item.
+- **Copy problems** in the import window. When the preview or **Check import** reports an error or a warning, one button copies the messages, your setup and the YAML, ready to paste back into the chat that wrote it.
+- A link to the Importer LLM Pack for your installed version under the source box.
 
 ### Changed
 
@@ -29,6 +31,7 @@
 - Corrected template tables that still showed older field names or wrong values.
 - `Active Effect Keys V2.txt` and the Effect templates now list the effect keys of dnd5e 6, each checked against dnd5e's own actor data, with a table of the older keys and what to write instead. The MIDI-QOL, DAE and macro keys moved to the MIDI Effect template and were checked against MIDI-QOL 14.6.11; keys it no longer registers were removed.
 - The "effect-based transformation" recipe uses the dnd5e 6 key for walking speed.
+- YAML with MIDI-QOL settings now imports where MIDI-QOL is not active, instead of being refused. The activities are created without those settings, and one notice in the preview lists what is left out and how to add it later. On dnd5e 6.1, where MIDI-QOL 14.6.11 cannot run, the notice says so instead of asking you to enable it.
 - Clearer template guidance: effects that last until the end of your next turn (`Effect Expiry: sourceEnd`), MIDI-QOL's other activity running only on the targets an attack hit, and `Modifiers` being the one damage field you can leave out.
 
 ### Fixed

@@ -8,11 +8,11 @@ This file is an add-on layer for worlds where MIDI-QOL is active (and DAE, for e
 
 - Add `AUTOMATION` only when the user says MIDI-QOL is active in their world. MIDI-QOL gives the fullest automation, but every Item in this pack works without it. Without the user's word, leave `AUTOMATION` out.
 - MIDI-QOL 14.6.11 runs on dnd5e 6.0.6, not on dnd5e 6.1.0. A user on dnd5e 6.1.0 cannot have MIDI-QOL active yet, so write no `AUTOMATION` for them.
-- 5e Activity Importer refuses to import an activity with MIDI-QOL settings while MIDI-QOL is inactive ("MIDI-QOL must be active to import this Activity's automation fields"). If the user reports that message, answer with the same YAML without its `AUTOMATION` sections.
+- Without MIDI-QOL, the import windows import an activity without its MIDI-QOL settings and list what they left out ("MIDI-QOL is not active in this world, so 2 MIDI-QOL settings will be left out: ..."). Flags under `AUTOMATION` are stored either way. If the user wants YAML for that world, answer with the same YAML without its `AUTOMATION` sections.
 - `AUTOMATION` is the only form to write. Older YAML can hold sections named `MIDI ...` or `DAE ...`; the importer still reads them, but never write them, and never write them next to `AUTOMATION` in one block.
 - Change only what the MIDI-QOL settings need. The Base sections stay as they were.
 
-The `AUTOMATION` section holds the MIDI-QOL settings of this activity. MIDI-QOL 14.6.11 must be active when a block with that section is imported, and MIDI-QOL 14.6.11 runs on D&D5e 6.0, not 6.1. Without the `AUTOMATION` section the same block is a complete Base activity that needs neither module. DAE and Convenient Effects are separate optional integrations.
+The `AUTOMATION` section holds the MIDI-QOL settings of this activity. They are stored only where MIDI-QOL 14.6.11 is active, and MIDI-QOL 14.6.11 runs on D&D5e 6.0, not 6.1; elsewhere the import windows import the block without them and list what they left out. Without the `AUTOMATION` section the same block is a complete Base activity that needs neither module. DAE and Convenient Effects are separate optional integrations.
 
 ## AUTOMATION: where it goes
 
@@ -132,7 +132,7 @@ ACTIVITY_SAVE: # or any other ACTIVITY_* root key
 
 | Setting | Rule |
 | --- | --- |
-| Availability | MIDI-QOL must be active for `AUTOMATION.midi-qol` settings to be imported and to act. DAE and Convenient Effects are separate integrations; neither importer implies them. |
+| Availability | MIDI-QOL must be active for `AUTOMATION.midi-qol` settings to be stored and to act. Without it, both import windows import the activity without them and list what they left out; flags are stored either way. DAE and Convenient Effects are separate integrations; neither importer implies them. |
 | Exact values | `AUTOMATION` stores what is written. There is no `n/a` and no `Auto`, and a quoted `"true"` is an error. Leave a setting out to keep MIDI-QOL's own default. An unknown name or a wrong type is a parse error that names the path. |
 | Triggered activity | `midiProperties.triggeredActivityId` is `none` (off) or the id, identifier or UUID of another activity. `triggeredActivityConditionText` is optional. `triggeredActivityTargets` and `triggeredActivityRollAs` choose the target pool and the roller; they stay stored while the trigger is `none`. |
 | Other activity | `otherActivityId` is `""` (MIDI-QOL chooses), `none`, or the id or identifier of an activity on the same Item that has `midiProperties.otherActivityCompatible: true`. `otherActivityAsParentType` exists on Attack, Save, Check and Utility only. |

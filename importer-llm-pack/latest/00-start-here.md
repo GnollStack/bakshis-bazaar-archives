@@ -349,17 +349,17 @@ Every file of this pack starts with the same version line: pack 14.4.0, for 5e I
 
 ## Start here: when the importer reports a problem
 
-The user may paste back messages from the preview. Fix exactly what they name and answer with the whole corrected YAML, keeping everything else.
+The user may paste back messages from the preview. Fix exactly what they name and answer with the whole corrected YAML, keeping everything else. The windows' **Copy problems** button copies the messages with a `Setup:` line and the YAML. The setup line names the modules the user has: with `5e Activity Importer not active`, answer with a core Item; unless it says `MIDI-QOL ... active`, leave `AUTOMATION` out.
 
 | The message says | Do this |
 | --- | --- |
 | `Unknown or unused keys in ACTIVITY_SAVE; they will be ignored: ...` | A name is misspelled or in the wrong section. Correct it from the field reference, or move it to its section. |
 | `Unknown key "X" in SECTION; it will be ignored.` | The same, in an Item section. A suggestion after it names the right key. |
 | `Cast requires a spell Item UUID before import; resolve the spell drop zone.` | Expected when the spell is named by `Item Name`. The user picks the spell in the import window; change nothing. |
-| `MIDI-QOL must be active to import this Activity's automation fields` | MIDI-QOL is not active in their world. Answer with the same YAML without its `AUTOMATION` sections. |
+| `MIDI-QOL is not active in this world, so 2 MIDI-QOL settings will be left out: ...` (or `is not installed`, or `does not run on dnd5e ...`) | MIDI-QOL cannot store those settings in their world, so the window imports the rest without them. Nothing is broken; if the user wants YAML for this world, answer with the same YAML without its `AUTOMATION` sections. |
 | `5e-activity-importer module is not active. Skipping inline activities/effects.` | The user has only 5e Item Importer. The core Item imports; offer a core Item without `Activities` and `effects`. |
 | a message that a value is not allowed, or that a required field is missing | Use one of the values the field reference lists, or add the field. |
 
 ## Start here: MIDI-QOL in one line
 
-MIDI-QOL gives the fullest automation, but every Item works without it: add the `AUTOMATION` layer only when the user says MIDI-QOL is active in their world.
+MIDI-QOL gives the fullest automation, but every Item works without it: add the `AUTOMATION` layer only when the user says MIDI-QOL is active in their world. Without MIDI-QOL, the import windows leave those settings out and import the rest.

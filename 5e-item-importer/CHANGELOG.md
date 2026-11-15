@@ -10,6 +10,8 @@
 - Food properties. A consumable's `FOOD_PROPERTIES` section sets **Hydrating** and **Nutritious** (dnd5e 6.1).
 - `PROPERTIES.Unidentified Contents` for containers.
 - The `wondrous` consumable type, ring areas for spells, and the `lineage` subtype for species features.
+- **Copy problems** in the import window. When the preview reports an error or a warning, one button copies the messages, your setup and the YAML, ready to paste back into the chat that wrote it.
+- A link to the Importer LLM Pack for your installed version under **Item source**.
 - Templates written for LLMs. Every template opens with **At a glance** (when to use it and the smallest document that works), maps rules wording to YAML fields in **From source text to YAML**, and follows its example with **Check before you answer**. The generation guide has a table for picking the template.
 - The [Importer LLM Pack](https://github.com/GnollStack/bakshis-bazaar-archives/tree/main/importer-llm-pack/14.4.0): a set of files for Claude Projects, ChatGPT Projects or any other chatbot that teaches it to write Items for this module, with setup steps, the files to upload for your modules, and worked examples from rules text to finished YAML.
 
@@ -24,6 +26,7 @@
 - Corrected template tables and examples, including mundane examples that used common rarity.
 - With Activity Importer 14.4.0, a misspelled or misplaced key inside an inline activity or effect is listed as a warning in the preview. It used to be skipped without a message.
 - The `full-midi-weapon` and `full-midi-feat` examples write their MIDI-QOL settings in the `AUTOMATION` section, the form Activity Importer 14.4.0 teaches and exports. They import to the same data as before.
+- With Activity Importer 14.4.0, a complete Item whose inline activities hold MIDI-QOL settings imports where MIDI-QOL is not active. The activities are created without those settings, and one notice in **Activities & Effects** lists what is left out.
 
 ### Fixed
 
