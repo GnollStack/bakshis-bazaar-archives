@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [14.4.0] - 2026-11-16
+
 ### Added
 
 - D&D 5e 6.1 support. The importer is verified on Foundry 14.370 with dnd5e 6.0.6 and 6.1.0.
@@ -28,6 +30,7 @@
 - The `full-midi-weapon` and `full-midi-feat` examples write their MIDI-QOL settings in the `AUTOMATION` section, the form Activity Importer 14.4.0 teaches and exports. They import to the same data as before.
 - Parse errors and warnings no longer pop up one by one; the preview lists them, so a batch no longer fills the screen. They are still written to the browser console.
 - With Activity Importer 14.4.0, a complete Item whose inline activities hold MIDI-QOL settings imports where MIDI-QOL is not active. The activities are created without those settings, and one notice in **Activities & Effects** lists what is left out.
+- A shorter README written for GMs, with a section on letting a chatbot fill in the templates. The template links, YAML rules, quick drafts, description enrichers and how to write several Items in one paste moved into the bundled template guide (`templates/README.md`), and the stat block tips into the Naturalized Item Template.
 
 ### Fixed
 

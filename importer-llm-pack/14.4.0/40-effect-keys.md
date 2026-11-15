@@ -1,6 +1,6 @@
 # Importer LLM Pack 14.4.0: effect keys
 
-Pack 14.4.0 (2026-11-14) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
+Pack 14.4.0 (2026-11-16) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
 
 This file lists the effect keys of dnd5e 6 for the `CHANGES` of every effect: an `EFFECT` block, an `effects` entry or an `APPLIED_EFFECTS` entry. It is the same list as in 5e Activity Importer's Effect template.
 

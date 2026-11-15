@@ -1,6 +1,6 @@
 # Importer LLM Pack 14.4.0: Items
 
-Pack 14.4.0 (2026-11-14) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
+Pack 14.4.0 (2026-11-16) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
 
 This file covers the Item documents of 5e Item Importer, the free module. For each Item type it gives the root key, the rules wording and the fields it becomes, every field, the value lists, one core example and the checks to make before answering. A core Item works with 5e Item Importer alone. A full Item adds an `Activities` list and an `effects` list inside the root key; those need 5e Activity Importer, and 20-activities-and-effects.md describes their blocks. 00-start-here.md says which Item type to choose and how a full Item is put together.
 

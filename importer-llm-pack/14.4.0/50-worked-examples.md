@@ -1,6 +1,6 @@
 # Importer LLM Pack 14.4.0: worked examples
 
-Pack 14.4.0 (2026-11-14) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
+Pack 14.4.0 (2026-11-16) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
 
 Each example goes from rules text to the finished YAML. The finished YAML of every example imports as written, and it was checked with the importers' own parsers. Use the examples to check the shape of an answer, not as content to copy: names, numbers and mechanics always come from the user's source.
 

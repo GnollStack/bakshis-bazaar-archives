@@ -1,6 +1,6 @@
 # Importer LLM Pack 14.4.0: the MIDI-QOL and DAE layer
 
-Pack 14.4.0 (2026-11-14) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
+Pack 14.4.0 (2026-11-16) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
 
 This file is an add-on layer for worlds where MIDI-QOL is active (and DAE, for effect settings). It adds an `AUTOMATION` section to blocks that are already complete. Write the Item and its activities and effects from 10-items.md and 20-activities-and-effects.md first, check that they work without MIDI-QOL, and only then add the settings here.
 

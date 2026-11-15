@@ -1,6 +1,6 @@
 # Importer LLM Pack 14.4.0: activities and effects
 
-Pack 14.4.0 (2026-11-14) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
+Pack 14.4.0 (2026-11-16) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
 
 This file covers the blocks of 5e Activity Importer, the premium module: activities (the `ACTIVITY_*` root keys, what an Item does when it is used) and Active Effects (the `EFFECT` block, a lasting change or condition). The same blocks go inside a full Item's `Activities` and `effects` lists, or stand alone, separated by `---`, when they are added to an Item that already exists. Every block here is complete without MIDI-QOL; 30-midi-qol-and-dae.md adds the MIDI-QOL layer. 00-start-here.md says which block to choose and how blocks fit into an Item.
 

@@ -4,6 +4,8 @@
 
 ## Unreleased
 
+## [14.4.0] - 2026-11-16
+
 ### Added
 
 - D&D 5e 6.1 support. The importer is verified on Foundry 14.370 with dnd5e 6.0.6 and 6.1.0.
@@ -21,11 +23,10 @@
 
 - Strict activity and effect YAML now uses serialization schema 6. Older YAML still imports unchanged; exports write the new version.
 - Full-Item workflows need Item Importer 14.4.0 or later, so update both importers together.
-- MIDI-QOL and DAE settings now follow MIDI-QOL 14.6.11 and DAE 14.6.9. MIDI-QOL 14.6.11 does not load on dnd5e 6.1, so the MIDI templates need dnd5e 6.0.6 for now.
+- MIDI-QOL and DAE settings now follow MIDI-QOL 14.6.11 and DAE 14.6.9. MIDI-QOL 14.6.11 does not load on dnd5e 6.1, so MIDI-QOL automation needs dnd5e 6.0.6 for now.
 - The MIDI templates now write MIDI-QOL and DAE settings in the `AUTOMATION` section, the same form an export uses. Each MIDI template is complete on its own: it holds the whole Base reference for its activity type, the `AUTOMATION` fields with a table for each, and rows and checks that name them. The examples in `docs/examples/midi-*.yaml` use `AUTOMATION` too.
 - The older `MIDI CONDITIONS`, `MIDI OVERTIME`, `DAE Details` and related sections still import as before. They moved out of the templates into one page, `docs/midi-legacy-sections.md`, which also lists the `AUTOMATION` path for every older label.
 - **MIDI Common Fields Reference** now lists the `AUTOMATION` settings every activity type shares.
-- **Preview** shows a warning when a block writes MIDI-QOL settings in `AUTOMATION` while MIDI-QOL is not active, as it already did for the older sections.
 - A status registered by the running system or by another module no longer shows an "unknown status" warning.
 - `Change Type` accepts the core types in any letter case, so `Add` is read as `add`.
 - Corrected template tables that still showed older field names or wrong values.
@@ -33,6 +34,7 @@
 - The "effect-based transformation" recipe uses the dnd5e 6 key for walking speed.
 - YAML with MIDI-QOL settings now imports where MIDI-QOL is not active, instead of being refused. The activities are created without those settings, and one notice in the preview lists what is left out and how to add it later. On dnd5e 6.1, where MIDI-QOL 14.6.11 cannot run, the notice says so instead of asking you to enable it.
 - Clearer template guidance: effects that last until the end of your next turn (`Effect Expiry: sourceEnd`), MIDI-QOL's other activity running only on the targets an attack hit, and `Modifiers` being the one damage field you can leave out.
+- A shorter README written for GMs, with a section on letting a chatbot fill in the templates. The field-by-field reference stays in the bundled template guide and examples.
 
 ### Fixed
 
@@ -48,6 +50,7 @@
 - A Cast activity stored its fixed `Save DC` and `Attack Bonus` as numbers where dnd5e keeps text, so importing showed "Schema cleaning would coerce" warnings for them.
 - **Choose by UUID** and saving a preset did nothing in Foundry's desktop app, which does not support the browser's text prompt. Both now ask in a Foundry dialog.
 - An activity `Description` or `Chat Description` written as a YAML block (`|`) showed a "Schema cleaning would coerce" warning, because the block's last line break is removed when dnd5e saves it. Both are now stored trimmed, as dnd5e keeps them.
+
 ## [14.3.0] - 2026-11-07
 
 ### Added

@@ -1,6 +1,6 @@
 # Importer LLM Pack 14.4.0
 
-Pack 14.4.0 (2026-11-14) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
+Pack 14.4.0 (2026-11-16) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
 
 The Importer LLM Pack teaches a chatbot to write Items for [5e Item Importer](https://github.com/GnollStack/5e-Item-Importer) and [5e Activity Importer](https://foundryvtt.com/packages/5e-activity-importer). Give the chatbot these files, describe an item or paste its rules text, and paste the YAML it returns into the import window in Foundry VTT.
 
