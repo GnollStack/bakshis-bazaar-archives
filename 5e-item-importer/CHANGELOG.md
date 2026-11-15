@@ -21,6 +21,7 @@
 - `Base Weapon: Hand Crossbow` is read as `handcrossbow`, and a base weapon or armor that dnd5e does not know shows a warning.
 - The warnings for an unknown spell range unit, duration unit, target type or area shape now say that the value is stored as written.
 - Corrected template tables and examples, including mundane examples that used common rarity.
+- With Activity Importer 14.4.0, a misspelled or misplaced key inside an inline activity or effect is listed as a warning in the preview. It used to be skipped without a message.
 
 ### Fixed
 
@@ -31,6 +32,8 @@
 - A consumable of type `wondrous` could be exported but not imported.
 - A scroll's older `verbal` property was left out of the export.
 - A Feature Subtype written without a Feature Type gave no warning.
+- The `full-midi-weapon` and `full-midi-feat` examples wrote `APPLICATION.Save On Save` where the importer reads `APPLICATION.On Save`.
+- A list entry that holds a colon and has no quotes, such as `- class:wizard` or a web address, was read as a mapping. Inside an inline activity it was stored as `[object Object]`.
 
 ## [14.3.0] - 2026-11-07
 

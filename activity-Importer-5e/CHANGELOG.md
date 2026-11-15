@@ -12,6 +12,7 @@
 - Ring areas (`Template Type: ring`), the "until dispelled" durations (`disp` and `dstr`) in every template, and the dnd5e 6.1 statuses `antimagic` and `fleeing`.
 - MIDI-QOL 14.6.11 settings in `AUTOMATION`: the **Floor** template origin, the **Remove Effect** area rule, and the rules-text link MIDI-QOL keeps on its sample Items.
 - Templates written for LLMs. Every template opens with **At a glance** (when to use it and the smallest block that works), maps rules wording to YAML fields in **From source text to YAML**, and follows its example with **Check before you answer**. The generation guide has a table for picking the template.
+- Warnings for unknown keys. A misspelled or misplaced section or field in an `ACTIVITY_*` or `EFFECT` block used to be skipped without a message. **Preview** now lists every key the importer did not read, with its full path, and suggests the expected name when only capitals, spaces or underscores differ (`MIDI_CONDITIONS` for `MIDI CONDITIONS`). The rest of the block still imports. With Item Importer, the same warning appears for the inline activities and effects of a complete Item.
 
 ### Changed
 
@@ -30,6 +31,9 @@
 - Exporting an effect failed when dnd5e's own data migration had left an empty rider flag or a folder reference on it.
 - A MIDI-QOL Save lost its critical damage settings unless the activity also had a `MIDI SAVE FIELDS` section.
 - The field catalog reported itself out of date on any build other than Foundry 14.369 with dnd5e 6.0.6.
+- A list entry that holds a colon, such as `- class:wizard` under `Retained Spell Lists`, was read as a mapping and stored as `[object Object]`. The same happened to such a value inside a complete Item and in an export that was imported again.
+- An exported Heal without an amount, Damage activity without a part, or Summon or Transform without a profile could not be imported again. dnd5e's own Spare the Dying, Regeneration and Iron Flask are stored that way. They now import as stored, with a warning. Leaving the section out is still an error.
+- An effect change row with an empty key, as dnd5e's own Boots of Elvenkind has, was dropped on import.
 
 ## [14.3.0] - 2026-11-07
 
