@@ -19,6 +19,10 @@
 - Strict activity and effect YAML now uses serialization schema 6. Older YAML still imports unchanged; exports write the new version.
 - Full-Item workflows need Item Importer 14.4.0 or later, so update both importers together.
 - MIDI-QOL and DAE settings now follow MIDI-QOL 14.6.11 and DAE 14.6.9. MIDI-QOL 14.6.11 does not load on dnd5e 6.1, so the MIDI templates need dnd5e 6.0.6 for now.
+- The MIDI templates now write MIDI-QOL and DAE settings in the `AUTOMATION` section, the same form an export uses. Each MIDI template is complete on its own: it holds the whole Base reference for its activity type, the `AUTOMATION` fields with a table for each, and rows and checks that name them. The examples in `docs/examples/midi-*.yaml` use `AUTOMATION` too.
+- The older `MIDI CONDITIONS`, `MIDI OVERTIME`, `DAE Details` and related sections still import as before. They moved out of the templates into one page, `docs/midi-legacy-sections.md`, which also lists the `AUTOMATION` path for every older label.
+- **MIDI Common Fields Reference** now lists the `AUTOMATION` settings every activity type shares.
+- **Preview** shows a warning when a block writes MIDI-QOL settings in `AUTOMATION` while MIDI-QOL is not active, as it already did for the older sections.
 - A status registered by the running system or by another module no longer shows an "unknown status" warning.
 - `Change Type` accepts the core types in any letter case, so `Add` is read as `add`.
 - Corrected template tables that still showed older field names or wrong values.

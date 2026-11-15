@@ -22,6 +22,7 @@
 - The warnings for an unknown spell range unit, duration unit, target type or area shape now say that the value is stored as written.
 - Corrected template tables and examples, including mundane examples that used common rarity.
 - With Activity Importer 14.4.0, a misspelled or misplaced key inside an inline activity or effect is listed as a warning in the preview. It used to be skipped without a message.
+- The `full-midi-weapon` and `full-midi-feat` examples write their MIDI-QOL settings in the `AUTOMATION` section, the form Activity Importer 14.4.0 teaches and exports. They import to the same data as before.
 
 ### Fixed
 
