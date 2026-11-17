@@ -4,6 +4,18 @@
 
 ## Unreleased
 
+### Added
+
+- Spells and creatures named in the YAML link themselves. A Cast's `Item Name` and a Summon or Transform profile's `Actor Name` are looked up when you click **Preview**: a world Item or Actor with that name wins, then a single match, then the copy in dnd5e's own compendium for your rules (2014 or 2024). The field shows what was linked and where it came from, with **Change** and **Clear**.
+- A search window for every spell and creature field. **Change** or **Search…** opens a small window whose matches update as you type, from the world and every compendium you can see, each with its source. Use the arrow keys and Enter, click a match, or paste a UUID. You can still drop a document on the field.
+- A setting, **Default compendium for linked spells and creatures**: match the world's Rules Version (the default), 2024, 2014, or always ask. 5e Item Importer has the same setting, and changing one changes the other.
+
+### Changed
+
+- When a name matches more than one document, such as a spell in another module's compendium as well as dnd5e's, the field lists the matches to choose from instead of asking you to search.
+- A spell or creature named without a UUID no longer shows a warning in the preview, and picking one is no longer part of **Copy problems**. Import still waits until every field is linked.
+- **Resolve All** and the search in **Tools: reference lookup** follow the same order and show where each match comes from.
+
 ## [14.4.0] - 2026-11-16
 
 ### Added

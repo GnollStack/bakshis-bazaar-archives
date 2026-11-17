@@ -4,6 +4,18 @@
 
 ## Unreleased
 
+### Added
+
+- A search window for every reference field: the spells and items a feat grants, choice lists and containers. **Change** or **Search…** opens a small window whose matches update as you type, each with its source. Use the arrow keys and Enter, click a match, or paste a UUID. You can still drop a document on the field. A linked field shows the document, where it came from, and **Change** and **Clear**.
+- A setting, **Default compendium for linked spells and creatures**: when a name is in both of dnd5e's compendiums, link the copy for the world's Rules Version (the default), 2024 or 2014, or always ask. 5e Activity Importer has the same setting, and changing one changes the other.
+- With 5e Activity Importer 14.5.0, a Cast's spell and a Summon or Transform creature named in a complete Item link themselves in the preview and in imports made through the API.
+
+### Changed
+
+- A world Item with the name now wins over compendium copies, and a 2014/2024 pair from dnd5e's own compendiums no longer asks. A name that also matches another module's compendium still lists the matches to choose from.
+- References search only the compendiums and world Items you are allowed to see.
+- Clearer messages while a spell, creature or document still needs to be picked.
+
 ## [14.4.0] - 2026-11-16
 
 ### Added
