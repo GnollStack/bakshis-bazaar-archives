@@ -4,6 +4,19 @@
 
 ## Unreleased
 
+## [14.5.1] - 2026-11-17
+
+### Fixed
+
+- 14.5.0 shipped without 25 of its files, so the module failed to load: none of its effects ran and its settings were missing from the module settings. This release contains every file. Your settings and vision profiles were never changed and come back as you left them.
+
+### Changed
+
+- Dragging tokens costs less. IVFX now reads your vision profiles once and keeps them until you change them, instead of working them out again for every token each time a token moves. In my 20-token test, IVFX's own work during a drag dropped by about a quarter.
+- On Foundry 14.370 and later, IVFX no longer adds its fog of war workaround, which made the graphics card send the fog image back an extra time on every fog of war save. Foundry 14.370 fixed that problem itself. Earlier V14 builds still get the workaround.
+
+## [14.5.0] - 2026-11-13
+
 ### Added
 
 - Perceptive integration. With Perceptive active, IVFX decides how bright it is where a token stands for Perceptive's stealth and perception checks. Daylight through openings, moonlight, magical darkness, and darkness Regions now count the way you see them on the canvas. Each viewer's senses decide what they perceive: by default darkvision sees darkness and dim light as bright within its range, truesight, blindsight, and tremorsense see clearly within theirs, and a vision profile with strong light amplification sees dim light as bright. Perceptive keeps its rolls, DCs, spotting, and peeking. GMs find the options under **Perceptive Integration** in the module settings, including a D&D 5e vision rules option and an off switch. Verified with Perceptive 6.0.9; other Perceptive 6 versions run with a warning, and other versions are left alone.
