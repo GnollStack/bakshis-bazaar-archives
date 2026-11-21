@@ -1,6 +1,6 @@
-# Importer LLM Pack 14.4.0: Items
+# Importer LLM Pack 14.5.0: Items
 
-Pack 14.4.0 (2026-11-16) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
+Pack 14.5.0 (2026-11-19) for 5e Item Importer 14.5.0 and 5e Activity Importer 14.5.0, on dnd5e 6.0.6 and 6.1.1 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.7.0 and DAE 14.6.10 on dnd5e 6.1.0.
 
 This file covers the Item documents of 5e Item Importer, the free module. For each Item type it gives the root key, the rules wording and the fields it becomes, every field, the value lists, one core example and the checks to make before answering. A core Item works with 5e Item Importer alone. A full Item adds an `Activities` list and an `effects` list inside the root key; those need 5e Activity Importer, and 20-activities-and-effects.md describes their blocks. 00-start-here.md says which Item type to choose and how a full Item is put together.
 
@@ -1803,8 +1803,8 @@ FEAT:
 
   # Optional, repeatable. One root key per entry; omit the list when the feature
   # grants nothing. Referenced documents resolve by UUID, Name or Identifier; the
-  # import window shows a drop zone for anything missing or ambiguous, and import
-  # waits until every reference resolves. HitPoints, Size and Subclass belong to
+  # import window asks for anything missing or ambiguous, and import waits until
+  # every reference resolves. HitPoints, Size and Subclass belong to
   # classes and species and are rejected here.
   ADVANCEMENT:
     - ABILITY_SCORE_IMPROVEMENT:
@@ -1935,7 +1935,7 @@ FEAT:
 
 ### FEAT: rules
 
-This is a native Feature Item, not a physical inventory item: rarity, quantity, price, weight, attunement and unidentified-description fields are not feature authoring controls and are ignored with a warning. Feature Type and Feature Subtype are dnd5e identifiers, not display labels; unknown values are stored with a warning and the sheet shows them as a generic Feature. Advancement is authored through the `ADVANCEMENT` list: ability score improvements, granted items, item choices, item changes, scale values and traits. Referenced Items and effects are matched by UUID, name or identifier in the world and compendia; anything missing or ambiguous gets a drop zone in the import window, and import waits until every reference resolves. Enchantment limits matter only for Artificer infusion and Rune Knight rune sources, and Cover only for vehicle features; both are retained for any feature. Source-specific attacks, saves, damage, healing and effects require companion attachments in full output.
+This is a native Feature Item, not a physical inventory item: rarity, quantity, price, weight, attunement and unidentified-description fields are not feature authoring controls and are ignored with a warning. Feature Type and Feature Subtype are dnd5e identifiers, not display labels; unknown values are stored with a warning and the sheet shows them as a generic Feature. Advancement is authored through the `ADVANCEMENT` list: ability score improvements, granted items, item choices, item changes, scale values and traits. Referenced Items and effects are matched by UUID, name or identifier in the world and compendia; the import window links clear matches and asks for anything missing or ambiguous, and import waits until every reference resolves. Enchantment limits matter only for Artificer infusion and Rune Knight rune sources, and Cover only for vehicle features; both are retained for any feature. Source-specific attacks, saves, damage, healing and effects require companion attachments in full output.
 
 A feature is not a physical Item: it has no quantity, price, weight, rarity, attunement or unidentified text. Omit unsupplied prerequisites, enchantment limits and optional resources rather than inventing them. Formula Uses Max must be deterministic, one line and at most 200 characters, without dice or semicolons; recovery needs a positive literal maximum or a formula maximum.
 
@@ -2013,7 +2013,7 @@ A feature is not a physical Item: it has no quantity, price, weight, rarity, att
 | `SCALE_VALUE` | ScaleValue | `Identifier` (the `@scale.<feature>.<identifier>` key), `Type` (`string`, `number`, `cr`, `dice`, `distance`, `usage`), `Distance Units`, `SCALE` (list of `Level` entries: `Value` for most types; `Dice Count`, `Die Denomination`, `Modifiers` for dice; `Value` and `Period` for usage). |
 | `TRAIT` | Trait | `Mode` (`default`, `expertise`, `forcedExpertise`, `upgrade`, `mastery`), `Allow Replacements`, `Grants` (trait keys), `CHOICES` (list of `Count`/`Pool`). |
 
-**References** (`ITEMS`, `POOL`, `RECOMMENDATION`, `EFFECT`) accept `UUID`, `Name`, `Identifier` and, for Items, `Type`. A UUID is validated as written. Otherwise a single world or compendium document matching the name (or identifier) resolves automatically; several matches or none produce a drop zone in the import window, and a dropped document always overrides the automatic choice. Advancement UUIDs must point at world or compendium documents, not Items embedded in an Actor.
+**References** (`ITEMS`, `POOL`, `RECOMMENDATION`, `EFFECT`) accept `UUID`, `Name`, `Identifier` and, for Items, `Type`. A UUID is validated as written. Otherwise the import window links the document by name (or identifier): a world copy, a single match, or the copy in dnd5e's compendium for the world's rules. Other matches are listed to choose from, and a missing one gets a search field; a document the user picks, pastes or drops always overrides the automatic choice. Advancement UUIDs must point at world or compendium documents, not Items embedded in an Actor.
 
 **Spell configuration** (`SPELL`): `Ability` lists spellcasting ability identifiers; `Method` is `atwill`, `innate`, `ritual`, `pact` or `spell`; `Prepared` is `unprepared`, `prepared` or `always`; `Uses Max`/`Uses Per`/`Require Slot` give the granted spells their own uses.
 

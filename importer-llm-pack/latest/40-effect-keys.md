@@ -1,6 +1,6 @@
-# Importer LLM Pack 14.4.0: effect keys
+# Importer LLM Pack 14.5.0: effect keys
 
-Pack 14.4.0 (2026-11-16) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
+Pack 14.5.0 (2026-11-19) for 5e Item Importer 14.5.0 and 5e Activity Importer 14.5.0, on dnd5e 6.0.6 and 6.1.1 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.7.0 and DAE 14.6.10 on dnd5e 6.1.0.
 
 This file lists the effect keys of dnd5e 6 for the `CHANGES` of every effect: an `EFFECT` block, an `effects` entry or an `APPLIED_EFFECTS` entry. It is the same list as in 5e Activity Importer's Effect template.
 
@@ -141,6 +141,12 @@ A `dnd5e.advantage` value is a quoted text: `"1"` adds advantage, `"-1"` adds di
 | "immunity to the frightened condition" | `system.traits.ci.value` | `add` | `frightened` |
 | "damage of that type you take is reduced by 3" | `system.traits.dm.amount.{damageType}` | `add` | `"-3"` |
 | "your fire damage ignores resistance" (dnd5e 6.1 or later) | `damage` | `dnd5e.damage.ignore.resistance` | `fire` |
+| "your fire damage ignores immunity" (dnd5e 6.1 or later) | `damage` | `dnd5e.damage.ignore.immunity` | `fire` |
+| "your cold damage ignores vulnerability" (dnd5e 6.1 or later) | `damage` | `dnd5e.damage.ignore.vulnerability` | `cold` |
+| "creatures immune to your fire damage take it as if resistant" (dnd5e 6.1 or later) | `damage` | `dnd5e.damage.downgrade` | `fire` |
+| "your damage ignores resistance of every type" (dnd5e 6.1 or later) | `damage` | `dnd5e.damage.ignore.resistance` | `ALL` |
+
+The last five rows are rules on the attacker: the effect sits on the creature or item that deals the damage, not on the target. Write one change per damage type, or the single value `ALL` for every type. MIDI-QOL 14.7.0 applies these rules to the damage it applies as well, so they work with and without MIDI-QOL; they replace DAE's older ignore-immunity, ignore-resistance and ignore-vulnerability trait keys, which DAE 14.6.10 converts to them.
 
 ## Effect keys: proficiencies, languages and size
 

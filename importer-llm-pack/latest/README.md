@@ -1,6 +1,6 @@
-# Importer LLM Pack 14.4.0
+# Importer LLM Pack 14.5.0
 
-Pack 14.4.0 (2026-11-16) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
+Pack 14.5.0 (2026-11-19) for 5e Item Importer 14.5.0 and 5e Activity Importer 14.5.0, on dnd5e 6.0.6 and 6.1.1 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.7.0 and DAE 14.6.10 on dnd5e 6.1.0.
 
 The Importer LLM Pack teaches a chatbot to write Items for [5e Item Importer](https://github.com/GnollStack/5e-Item-Importer) and [5e Activity Importer](https://foundryvtt.com/packages/5e-activity-importer). Give the chatbot these files, describe an item or paste its rules text, and paste the YAML it returns into the import window in Foundry VTT.
 
@@ -8,10 +8,10 @@ It works with any chatbot that accepts files or long messages. The steps below c
 
 ## Download
 
-- Every file in one zip: [importer-llm-pack-14.4.0.zip](importer-llm-pack-14.4.0.zip)
+- Every file in one zip: [importer-llm-pack-14.5.0.zip](importer-llm-pack-14.5.0.zip)
 - Or download the files you need from this folder.
 
-Use the pack that matches your modules. This one is for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0. Each version keeps its own folder, and `latest` always holds the newest one.
+Use the pack that matches your modules. This one is for 5e Item Importer 14.5.0 and 5e Activity Importer 14.5.0. Each version keeps its own folder, and `latest` always holds the newest one.
 
 ## Which files you need
 
@@ -19,7 +19,7 @@ Use the pack that matches your modules. This one is for 5e Item Importer 14.4.0 
 | --- | --- |
 | 5e Item Importer | `00-start-here.md`, `10-items.md`, `50-worked-examples.md` |
 | 5e Item Importer and 5e Activity Importer | the files above, plus `20-activities-and-effects.md` and `40-effect-keys.md` |
-| MIDI-QOL and DAE as well (dnd5e 6.0.6) | all of the above, plus `30-midi-qol-and-dae.md` |
+| MIDI-QOL and DAE as well | all of the above, plus `30-midi-qol-and-dae.md` |
 
 `project-instructions.txt` holds the text for the project's instructions.
 
@@ -57,7 +57,7 @@ Use the pack that matches your modules. This one is for 5e Item Importer 14.4.0 
 2. Describe the item, or paste its rules text.
 3. Copy the YAML into the import window: 5e Item Importer for a whole Item, or 5e Activity Importer to add activities and effects to an Item you already have. Click **Preview**.
 4. If the preview shows warnings or errors, paste them into the chat. The chatbot corrects the YAML.
-5. When an item casts a spell, the import window asks you to pick that spell before you import.
+5. When an item casts a spell, the import window links the spell by name, from your world or the dnd5e compendium for your rules. When several spells share the name, it asks you to pick one before you import.
 
 The chatbot keeps the complete rules text in each Item's description. A rule the modules cannot store stays there as text, for you to handle at the table. MIDI-QOL gives the fullest automation, but every Item works without it.
 

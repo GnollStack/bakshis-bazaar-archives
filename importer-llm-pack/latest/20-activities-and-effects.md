@@ -1,6 +1,6 @@
-# Importer LLM Pack 14.4.0: activities and effects
+# Importer LLM Pack 14.5.0: activities and effects
 
-Pack 14.4.0 (2026-11-16) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
+Pack 14.5.0 (2026-11-19) for 5e Item Importer 14.5.0 and 5e Activity Importer 14.5.0, on dnd5e 6.0.6 and 6.1.1 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.7.0 and DAE 14.6.10 on dnd5e 6.1.0.
 
 This file covers the blocks of 5e Activity Importer, the premium module: activities (the `ACTIVITY_*` root keys, what an Item does when it is used) and Active Effects (the `EFFECT` block, a lasting change or condition). The same blocks go inside a full Item's `Activities` and `effects` lists, or stand alone, separated by `---`, when they are added to an Item that already exists. Every block here is complete without MIDI-QOL; 30-midi-qol-and-dae.md adds the MIDI-QOL layer. 00-start-here.md says which block to choose and how blocks fit into an Item.
 
@@ -1215,7 +1215,7 @@ ACTIVITY_CAST:
 
 ### ACTIVITY_CAST: rules
 
-CASTING_DETAILS.Item UUID must resolve to an accessible spell Item. Item Name is a lookup hint, not a replacement UUID. Spell Level is numeric; Override Values controls the supplied attack/save values independently. The Item selector may remain unresolved in a draft, but resolve it before import. Cast does not support APPLIED_EFFECTS. Native target inheritance and measured-template prompting are separate controls. In reviewed MIDI 14.6.11, Cast forces target confirmation to never.
+CASTING_DETAILS.Item UUID must resolve to an accessible spell Item. Item Name is a lookup hint, not a replacement UUID. Spell Level is numeric; Override Values controls the supplied attack/save values independently. The Item selector may remain unresolved in a draft, but resolve it before import. Cast does not support APPLIED_EFFECTS. Native target inheritance and measured-template prompting are separate controls. In reviewed MIDI 14.6.11 and 14.7.0, Cast forces target confirmation to never.
 
 | Configuration | Authoring rule |
 | --- | --- |
@@ -1869,7 +1869,7 @@ ACTIVITY_FORWARD:
 
 Forward has no native duration field; configure duration on the activity it forwards to. Resolve its reference with attachment planning before schema validation: raw name references are not native 16-character IDs.
 
-FORWARD_TARGET.Activity may identify a non-Forward activity by exact ID, identifier or unique exact name. The target must exist on the Item or in the same attachment batch. Ambiguous, missing, Forward-to-Forward and cyclic targets block planning. Forward does not support APPLIED_EFFECTS. Native Forward resolution differs from MIDI trigger/Other Activity resolution; in reviewed MIDI 14.6.11 Forward forces target confirmation to never.
+FORWARD_TARGET.Activity may identify a non-Forward activity by exact ID, identifier or unique exact name. The target must exist on the Item or in the same attachment batch. Ambiguous, missing, Forward-to-Forward and cyclic targets block planning. Forward does not support APPLIED_EFFECTS. Native Forward resolution differs from MIDI trigger/Other Activity resolution; in reviewed MIDI 14.6.11 and 14.7.0 Forward forces target confirmation to never.
 
 ### ACTIVITY_FORWARD: example
 

@@ -1,6 +1,6 @@
-# Importer LLM Pack 14.4.0: worked examples
+# Importer LLM Pack 14.5.0: worked examples
 
-Pack 14.4.0 (2026-11-16) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
+Pack 14.5.0 (2026-11-19) for 5e Item Importer 14.5.0 and 5e Activity Importer 14.5.0, on dnd5e 6.0.6 and 6.1.1 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.7.0 and DAE 14.6.10 on dnd5e 6.1.0.
 
 Each example goes from rules text to the finished YAML. The finished YAML of every example imports as written, and it was checked with the importers' own parsers. Use the examples to check the shape of an answer, not as content to copy: names, numbers and mechanics always come from the user's source.
 
@@ -133,7 +133,7 @@ WEAPON:
 - A wand is `EQUIPMENT` with `Equipment Type: wand`, never a `SPELL` and never a `CONSUMABLE` in this pack.
 - "7 charges" belong to the wand: `USAGE.Uses Max: 7` and `USAGE.Uses Spent: 0` on the Item. "regains 1d6 + 1 expended charges daily at dawn" is one Item `RECOVERY` entry with `Period: dawn`, `Type: formula` and `Formula: "1d6 + 1"`.
 - "expend 1 of its charges to cast magic missile" is one `ACTIVITY_CAST` that spends the wand's charges: a `CONSUMPTION` entry with `Consumption Type: itemUses` and `Amount: "1"`, and no target item, so it spends the parent Item's uses.
-- The spell is linked by name: `CASTING_DETAILS.Item Name: Magic Missile` with `Item UUID: n/a`, because the user gave no UUID. The preview shows a warning for it, and the import window asks the user to pick the spell before importing.
+- The spell is linked by name: `CASTING_DETAILS.Item Name: Magic Missile` with `Item UUID: n/a`, because the user gave no UUID. The import window links the spell by that name, or asks the user to pick it when several spells share the name.
 - "(1st-level version)" is `Spell Level: 1`. A spell cast from a magic item uses no spell slot and needs no components, so the block writes `BEHAVIOR.Consume Spell Slot: false` and `Ignored Properties: [vocal, somatic, material]`. Leaving `Ignored Properties` out stores an empty list, which means the components are required.
 - "roll a d20; on a 1 it crumbles" has no field. It stays in the description for the GM.
 
@@ -186,7 +186,7 @@ EQUIPMENT:
 
 ### Wand of Sparks (EQUIPMENT): after import
 
-- Resolve Magic Missile in the import window (search or drag and drop) before importing.
+- Check that the preview linked Magic Missile from the compendium you use. If it asks, pick the spell there before importing.
 
 ## Worked example 3: Draught of Mending (CONSUMABLE)
 
@@ -485,7 +485,7 @@ SPELL:
 
 ## Worked example 7: Dread Howl with MIDI-QOL (FEAT)
 
-**Kind of answer:** full Item with the MIDI-QOL layer. **Needs:** 5e Item Importer, 5e Activity Importer, and MIDI-QOL active in the world (MIDI-QOL runs on dnd5e 6.0).
+**Kind of answer:** full Item with the MIDI-QOL layer. **Needs:** 5e Item Importer, 5e Activity Importer, and MIDI-QOL active in the world.
 
 ### Dread Howl with MIDI-QOL (FEAT): rules text
 

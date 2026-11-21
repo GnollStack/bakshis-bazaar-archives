@@ -4,17 +4,27 @@
 
 ## Unreleased
 
+## [14.5.0] - 2026-11-19
+
 ### Added
 
 - Spells and creatures named in the YAML link themselves. A Cast's `Item Name` and a Summon or Transform profile's `Actor Name` are looked up when you click **Preview**: a world Item or Actor with that name wins, then a single match, then the copy in dnd5e's own compendium for your rules (2014 or 2024). The field shows what was linked and where it came from, with **Change** and **Clear**.
 - A search window for every spell and creature field. **Change** or **Search…** opens a small window whose matches update as you type, from the world and every compendium you can see, each with its source. Use the arrow keys and Enter, click a match, or paste a UUID. You can still drop a document on the field.
 - A setting, **Default compendium for linked spells and creatures**: match the world's Rules Version (the default), 2024, 2014, or always ask. 5e Item Importer has the same setting, and changing one changes the other.
+- A setting, **Compendiums to link first**: an ordered list of compendiums whose spells and creatures link before any other copy, such as a module of spells already automated for MIDI-QOL. Open it with **Choose compendiums** in the module settings. A world Item with the name still wins, and 5e Item Importer shares the list.
+- MIDI-QOL 14.7.0, the MIDI-QOL release for dnd5e 6.1. MIDI-QOL YAML can now use dnd5e 6.1's antimagic areas and enchantment riders.
+- More dnd5e 6.1 damage rules in the effect keys: your damage ignores immunity, resistance or vulnerability, or treats immunity as resistance, for one damage type or all of them. With MIDI-QOL 14.7.0 they apply to MIDI-QOL's damage too.
+- Two MIDI-QOL recipes in the MIDI templates: a wound that a Medicine check or healing closes (`flags.midi-qol.stanch`, MIDI-QOL 14.6.13 or later), and extra damage that works only while the wielder is attuned (`item.magicAvailable`, MIDI-QOL 14.7.0).
 
 ### Changed
 
 - When a name matches more than one document, such as a spell in another module's compendium as well as dnd5e's, the field lists the matches to choose from instead of asking you to search.
 - A spell or creature named without a UUID no longer shows a warning in the preview, and picking one is no longer part of **Copy problems**. Import still waits until every field is linked.
 - **Resolve All** and the search in **Tools: reference lookup** follow the same order and show where each match comes from.
+- The MIDI templates no longer say MIDI-QOL needs dnd5e 6.0. MIDI-QOL 14.7.0 runs on dnd5e 6.1 and MIDI-QOL 14.6 on dnd5e 6.0; both keep the same settings, so the same YAML imports in either world.
+- Exports no longer stop at DAE's old `transfer` flag, which MIDI-QOL's sample Items still carry. The flag is left out; the effect's own **Apply Effect to Actor** setting keeps the same value.
+- Exporting an activity whose damage or healing uses a scaling mode dnd5e doesn't have, such as MIDI-QOL's sample Wand of Fireballs, now stops with a message that names the field and the modes to choose from, instead of writing YAML that would not import again.
+- Verified with D&D 5e 6.1.1, the current 6.1 bug-fix release, as well as 6.0.6 and 6.1.0.
 
 ## [14.4.0] - 2026-11-16
 

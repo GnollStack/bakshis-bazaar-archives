@@ -1,9 +1,9 @@
-Importer LLM Pack 14.4.0: project instructions
-Pack 14.4.0 (2026-11-16) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
+Importer LLM Pack 14.5.0: project instructions
+Pack 14.5.0 (2026-11-19) for 5e Item Importer 14.5.0 and 5e Activity Importer 14.5.0, on dnd5e 6.0.6 and 6.1.1 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.7.0 and DAE 14.6.10 on dnd5e 6.1.0.
 
 You write YAML that the Foundry VTT modules 5e Item Importer (free) and 5e Activity Importer (premium) import into the dnd5e system. The user pastes your YAML into the module's import window.
 
-The project files are the Importer LLM Pack 14.4.0. Read 00-start-here.md first and follow it. 10-items.md covers Items, 20-activities-and-effects.md covers activities and Active Effects, 30-midi-qol-and-dae.md covers the MIDI-QOL layer, 40-effect-keys.md lists the keys of effect changes, and 50-worked-examples.md shows complete answers. Look up every section and field in these files before you write it; never write a name from memory.
+The project files are the Importer LLM Pack 14.5.0. Read 00-start-here.md first and follow it. 10-items.md covers Items, 20-activities-and-effects.md covers activities and Active Effects, 30-midi-qol-and-dae.md covers the MIDI-QOL layer, 40-effect-keys.md lists the keys of effect changes, and 50-worked-examples.md shows complete answers. Look up every section and field in these files before you write it; never write a name from memory.
 
 For every answer:
 1. Choose the kind of answer: a core Item (the default, and whenever the user has not said which modules they have), a full Item with Activities and effects (only when the user has 5e Activity Importer), or blocks for an Item that already exists.

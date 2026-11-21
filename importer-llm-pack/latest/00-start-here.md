@@ -1,6 +1,6 @@
-# Importer LLM Pack 14.4.0: start here
+# Importer LLM Pack 14.5.0: start here
 
-Pack 14.4.0 (2026-11-16) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
+Pack 14.5.0 (2026-11-19) for 5e Item Importer 14.5.0 and 5e Activity Importer 14.5.0, on dnd5e 6.0.6 and 6.1.1 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.7.0 and DAE 14.6.10 on dnd5e 6.1.0.
 
 ## Start here: what you are doing
 
@@ -300,11 +300,11 @@ EFFECT:
 
 Some fields point at a document that already exists. Name it; never make up its UUID or ID.
 
-- **A spell cast by an Item** (`ACTIVITY_CAST`): `CASTING_DETAILS.Item Name` with the exact spell name and `CASTING_DETAILS.Item UUID: n/a`, unless the user gave the UUID. The preview shows a warning for it, and the import window asks the user to pick the spell before importing.
+- **A spell cast by an Item** (`ACTIVITY_CAST`): `CASTING_DETAILS.Item Name` with the exact spell name and `CASTING_DETAILS.Item UUID: n/a`, unless the user gave the UUID. The import window links the spell by that name, or asks the user to pick it when several spells share the name.
 - **Spells or Items a feature grants** (`FEAT` `ADVANCEMENT`): `Name` and `Type` of each, no UUID.
 - **A container in the same answer**: `INVENTORY.Container` with the container's name.
 - **Another activity on the same Item** (`ACTIVITY_FORWARD`): its exact `ACTIVITY.Name`.
-- **A creature to summon or a form to take** (`ACTIVITY_SUMMON`, `ACTIVITY_TRANSFORM` with a creature): the profile's `Actor Name` with the creature's exact name and `Actor UUID: n/a`, unless the user gave the UUID. The preview shows a warning for it, and the import window asks the user to pick the creature before importing.
+- **A creature to summon or a form to take** (`ACTIVITY_SUMMON`, `ACTIVITY_TRANSFORM` with a creature): the profile's `Actor Name` with the creature's exact name and `Actor UUID: n/a`, unless the user gave the UUID. The import window links the creature by that name, or asks the user to pick it when several creatures share the name.
 - Never invent a UUID, a compendium name, a 16-character ID (`Activity ID`, `Effect ID`, `Behavior ID`) or a macro name. The one exception is the shared effect in "Composition: one effect shared by several activities".
 
 ## Start here: output rules
@@ -345,7 +345,7 @@ Write `DESCRIPTION.Description` as HTML in a block: `Description: |`, then one `
 
 ## Start here: the version stamp
 
-Every file of this pack starts with the same version line: pack 14.4.0, for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0. If the user mentions other module versions, say once that the pack may not match them. Do not write the pack version into the YAML; `SCHEMA_VERSION: 7` is the only version an Item document carries.
+Every file of this pack starts with the same version line: pack 14.5.0, for 5e Item Importer 14.5.0 and 5e Activity Importer 14.5.0. If the user mentions other module versions, say once that the pack may not match them. Do not write the pack version into the YAML; `SCHEMA_VERSION: 7` is the only version an Item document carries.
 
 ## Start here: when the importer reports a problem
 
@@ -355,7 +355,7 @@ The user may paste back messages from the preview. Fix exactly what they name an
 | --- | --- |
 | `Unknown or unused keys in ACTIVITY_SAVE; they will be ignored: ...` | A name is misspelled or in the wrong section. Correct it from the field reference, or move it to its section. |
 | `Unknown key "X" in SECTION; it will be ignored.` | The same, in an Item section. A suggestion after it names the right key. |
-| `Cast requires a spell Item UUID before import; resolve the spell drop zone.` | Expected when the spell is named by `Item Name`. The user picks the spell in the import window; change nothing. |
+| `Cast requires a spell Item UUID before import; resolve the spell drop zone.` (from importers before 14.5.0) | Expected when the spell is named by `Item Name`. The user picks the spell in the import window; change nothing. |
 | `MIDI-QOL is not active in this world, so 2 MIDI-QOL settings will be left out: ...` (or `is not installed`, or `does not run on dnd5e ...`) | MIDI-QOL cannot store those settings in their world, so the window imports the rest without them. Nothing is broken; if the user wants YAML for this world, answer with the same YAML without its `AUTOMATION` sections. |
 | `Loot Type is empty (''), so the Item is stored without one, as dnd5e allows.` (or `Weapon Type`, `Base Weapon`, `Poison Type` and other fields) | The YAML has an empty value, as an export of an Item stored without one does. Fill in the value the source calls for from the field reference; leave it empty only when the user wants it so. |
 | `5e-activity-importer module is not active. Skipping inline activities/effects.` | The user has only 5e Item Importer. The core Item imports; offer a core Item without `Activities` and `effects`. |

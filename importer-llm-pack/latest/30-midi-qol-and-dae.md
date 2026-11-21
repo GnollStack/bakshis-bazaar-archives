@@ -1,18 +1,18 @@
-# Importer LLM Pack 14.4.0: the MIDI-QOL and DAE layer
+# Importer LLM Pack 14.5.0: the MIDI-QOL and DAE layer
 
-Pack 14.4.0 (2026-11-16) for 5e Item Importer 14.4.0 and 5e Activity Importer 14.4.0, on dnd5e 6.0.6 and 6.1.0 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.6.11 and DAE 14.6.9 on dnd5e 6.0.6.
+Pack 14.5.0 (2026-11-19) for 5e Item Importer 14.5.0 and 5e Activity Importer 14.5.0, on dnd5e 6.0.6 and 6.1.1 with Foundry VTT 14.370. The MIDI-QOL layer matches MIDI-QOL 14.7.0 and DAE 14.6.10 on dnd5e 6.1.0.
 
 This file is an add-on layer for worlds where MIDI-QOL is active (and DAE, for effect settings). It adds an `AUTOMATION` section to blocks that are already complete. Write the Item and its activities and effects from 10-items.md and 20-activities-and-effects.md first, check that they work without MIDI-QOL, and only then add the settings here.
 
 ## MIDI-QOL layer: when to add it
 
 - Add `AUTOMATION` only when the user says MIDI-QOL is active in their world. MIDI-QOL gives the fullest automation, but every Item in this pack works without it. Without the user's word, leave `AUTOMATION` out.
-- MIDI-QOL 14.6.11 runs on dnd5e 6.0.6, not on dnd5e 6.1.0. A user on dnd5e 6.1.0 cannot have MIDI-QOL active yet, so write no `AUTOMATION` for them.
+- MIDI-QOL 14.7.0 runs on dnd5e 6.1.0. A world still on dnd5e 6.0 runs MIDI-QOL 14.6, which stores the same settings, so the same `AUTOMATION` works there. Anything marked "dnd5e 6.1 or later" still needs dnd5e 6.1.
 - Without MIDI-QOL, the import windows import an activity without its MIDI-QOL settings and list what they left out ("MIDI-QOL is not active in this world, so 2 MIDI-QOL settings will be left out: ..."). Flags under `AUTOMATION` are stored either way. If the user wants YAML for that world, answer with the same YAML without its `AUTOMATION` sections.
 - `AUTOMATION` is the only form to write. Older YAML can hold sections named `MIDI ...` or `DAE ...`; the importer still reads them, but never write them, and never write them next to `AUTOMATION` in one block.
 - Change only what the MIDI-QOL settings need. The Base sections stay as they were.
 
-The `AUTOMATION` section holds the MIDI-QOL settings of this activity. They are stored only where MIDI-QOL 14.6.11 is active, and MIDI-QOL 14.6.11 runs on D&D5e 6.0, not 6.1; elsewhere the import windows import the block without them and list what they left out. Without the `AUTOMATION` section the same block is a complete Base activity that needs neither module. DAE and Convenient Effects are separate optional integrations.
+The `AUTOMATION` section holds the MIDI-QOL settings of this activity. They are stored only where MIDI-QOL is active (MIDI-QOL 14.7.0 runs on D&D5e 6.1, MIDI-QOL 14.6 on D&D5e 6.0); elsewhere the import windows import the block without them and list what they left out. Without the `AUTOMATION` section the same block is a complete Base activity that needs neither module. DAE and Convenient Effects are separate optional integrations.
 
 ## AUTOMATION: where it goes
 
@@ -141,13 +141,12 @@ ACTIVITY_SAVE: # or any other ACTIVITY_* root key
 | Area settings | `autoTargetType`, `autoTargetAction`, `regionBehavior` and `regionLight` act only when the activity has an area in `TARGETS`. |
 | Over time | `overTimeProperties` stay stored while `isOverTimeFlag` is `false`. `macroData.command` is stored text; the importer never runs it. |
 | Effects | `chooseEffects`, `toggleEffect` and `effectConditionText` need applied effects and targets when the activity is used. `autoCEEffects` also needs Convenient Effects. An applied effect takes its DAE settings in its own `AUTOMATION.dae`, as the MIDI Effect template describes. |
-| Validation | Reviewed against MIDI-QOL 14.6.11, D&D5e 6.0.6 and Foundry 14.370. A successful import proves storage, not gameplay: conditions, macros and linked activities are not executed. |
+| Validation | Reviewed against MIDI-QOL 14.7.0 on D&D5e 6.1.0 and MIDI-QOL 14.6.11 on D&D5e 6.0.6 (they store the same settings), Foundry 14.370. A successful import proves storage, not gameplay: conditions, macros and linked activities are not executed. |
 
 ## AUTOMATION: check before you answer (every activity)
 
-1. Do not write `Type: antimagic` under `APPLIED_BEHAVIORS` in MIDI YAML. It needs dnd5e 6.1, and MIDI-QOL 14.6.11 runs on dnd5e 6.0 only.
-2. Write MIDI-QOL and DAE settings only in the `AUTOMATION` section. The older `MIDI ...`, `DAE ...` and `Midi-QOL` sections must not appear in the same block: mixing them is a parse error.
-3. `AUTOMATION` is strict: an unknown name or a wrong value type is a parse error that names the path. Write `true`, `false` and numbers without quotes, and never write `n/a` there. A text value is stored as written, so a misspelled word is not rejected; it simply does nothing.
+1. Write MIDI-QOL and DAE settings only in the `AUTOMATION` section. The older `MIDI ...`, `DAE ...` and `Midi-QOL` sections must not appear in the same block: mixing them is a parse error.
+2. `AUTOMATION` is strict: an unknown name or a wrong value type is a parse error that names the path. Write `true`, `false` and numbers without quotes, and never write `n/a` there. A text value is stored as written, so a misspelled word is not rejected; it simply does nothing.
 
 ## AUTOMATION: common setting values
 
@@ -495,6 +494,7 @@ The rows add MIDI-QOL settings to a complete Base `ACTIVITY_DAMAGE` block. Paths
 | "each enemy in the area takes the damage" | `AUTOMATION.midi-qol.fields.midiProperties.autoTargetType: enemy` |
 | "this damage does not force a concentration check" | `AUTOMATION.midi-qol.fields.midiProperties.noConcentrationCheck: true` |
 | "on a hit, the target takes an extra 2d6 poison damage" (written as its own Damage activity on the weapon) | on this Damage activity: `AUTOMATION.midi-qol.fields.midiProperties.identifier: venom-damage`; `AUTOMATION.midi-qol.fields.midiProperties.otherActivityCompatible: true`; `AUTOMATION.midi-qol.fields.midiProperties.automationOnly: true`; on the attack: `AUTOMATION.midi-qol.fields.otherActivityId: venom-damage` |
+| "while you are attuned to the weapon, a hit deals an extra 2d6 radiant damage" (the extra damage is its own Damage activity, like the extra poison damage) | on that Damage activity also: `AUTOMATION.midi-qol.fields.useConditionText: "item.magicAvailable"`. MIDI-QOL 14.7.0 or later skips the activity while the Item needs attunement it lacks or its wielder is under antimagic |
 
 ### ACTIVITY_DAMAGE with MIDI-QOL: example
 
@@ -553,7 +553,7 @@ ACTIVITY_DAMAGE:
 2. `overTimeProperties.rollAs: source` rolls with the statistics of the Item's owner. `target` rolls with the statistics of the creature that carries the effect. `overTimeProperties.turnChoice` is `start` or `end`.
 3. To ignore a whole category write `ignoreTraits.idi` (immunity), `ignoreTraits.idr` (resistance), `ignoreTraits.idv` (vulnerability), `ignoreTraits.ida` (absorption) or `ignoreTraits.idm` (modification) as `true`. To ignore it for one damage type add `category.type` to the list `midiProperties.ignoreTraits`, such as `[idr.fire]`.
 4. `midiProperties.autoTargetType` only matters when the activity has an area template. Its values are fixed words such as `enemy` and `ally`; `enemies` would be stored and do nothing.
-5. Do not fill `useConditionText`, `effectConditionText` or the over-time remove conditions with made-up expressions. Write them only when the user supplies the expression; otherwise keep the restriction in the description.
+5. Do not fill `useConditionText`, `effectConditionText` or the over-time remove conditions with made-up expressions. Write them only when the user supplies the expression or a source row gives it (`item.magicAvailable`); otherwise keep the restriction in the description.
 
 ## ACTIVITY_HEAL with MIDI-QOL: when to add it
 
@@ -1296,10 +1296,11 @@ The rows add MIDI-QOL settings to a complete Base `EFFECT` block. Paths start at
 | "it has no effect while you have 0 hit points" | `AUTOMATION.dae.disableCondition: "@attributes.hp.value <= 0"` |
 | "lasts for 1d4 minutes" | `AUTOMATION.dae.durationExpression: "1d4 * 60"` |
 | "attack rolls against the target have advantage" | `CHANGES.Attribute Key: flags.midi-qol.grants.advantage.attack.all`; `CHANGES.Change Type: override`; `CHANGES.Change Phase: initial`; `CHANGES.Value: 1`; `CHANGES.Priority: 20` |
+| "a creature can take an action to make a DC 15 Wisdom (Medicine) check to close the wound"; "any magical healing also ends it" | `CHANGES.Attribute Key: flags.midi-qol.stanch`; `CHANGES.Change Type: override`; `CHANGES.Value: "dc=15, skill=med, range=5, healing=magical"`. `healing` is `none`, `spell`, `magical` or `any`; `range` is in feet. Write the wound as an effect the attack applies to its target (`APPLIED_EFFECTS`): MIDI-QOL (14.6.13 or later) looks for it on the wounded creature |
 
 ### EFFECT with DAE: when the layer applies
 
-The `AUTOMATION` section holds the DAE settings of this effect. They are stored whether or not DAE is active and act once DAE 14.6.9 is active; MIDI-QOL is not needed for them. Without the `AUTOMATION` section the same block is a complete Base effect.
+The `AUTOMATION` section holds the DAE settings of this effect. They are stored whether or not DAE is active and act once DAE is active (14.6.10 on D&D5e 6.1, 14.6.9 or later on D&D5e 6.0); MIDI-QOL is not needed for them. Without the `AUTOMATION` section the same block is a complete Base effect.
 
 | Setting | Rule |
 | --- | --- |
@@ -1307,7 +1308,7 @@ The `AUTOMATION` section holds the DAE settings of this effect. They are stored 
 | Exact values | `AUTOMATION` stores what is written. There is no `n/a`, and a quoted `"true"` is an error. Leave a setting out to keep DAE's own default. An unknown name or a wrong type is a parse error that names the path. |
 | Native effect first | `DETAILS`, `DURATION`, `CHANGES` and the status lists configure the effect and work without DAE. Use `AUTOMATION.dae` only for what they cannot express. |
 | Activity settings | Triggered activities, other activities, dialogs and over-time settings belong to an activity's `AUTOMATION.midi-qol.fields`. They are not part of an effect. |
-| Validation | Reviewed against DAE 14.6.9, D&D5e 6.0.6 and Foundry 14.370. Parsing does not process durations, conditions, macros or combat turns. |
+| Validation | Reviewed against DAE 14.6.10 on D&D5e 6.1.0 and DAE 14.6.9 on D&D5e 6.0.6 (they store the same settings), Foundry 14.370. Parsing does not process durations, conditions, macros or combat turns. |
 
 ### EFFECT with DAE: AUTOMATION settings
 
@@ -1335,7 +1336,7 @@ EFFECT:
 
 #### EFFECT with DAE values: FIELD REFERENCE (DAE AUTOMATION)
 
-> **Context:** These are DAE's settings on the effect, reviewed against DAE 14.6.9 on D&D5e 6.0.6, plus one core Foundry flag. Paths are relative to `AUTOMATION`. Every setting is optional: leave it out to keep DAE's default. Values are stored exactly as written; there is no `n/a`. The settings are stored without DAE and act only while DAE is active. An effect inside an activity's `APPLIED_EFFECTS` takes the same `AUTOMATION` section.
+> **Context:** These are DAE's settings on the effect, reviewed against DAE 14.6.10 on D&D5e 6.1.0 and DAE 14.6.9 on D&D5e 6.0.6, plus one core Foundry flag. Paths are relative to `AUTOMATION`. Every setting is optional: leave it out to keep DAE's default. Values are stored exactly as written; there is no `n/a`. The settings are stored without DAE and act only while DAE is active. An effect inside an activity's `APPLIED_EFFECTS` takes the same `AUTOMATION` section.
 
 | Field | Description | Accepted Values |
 |---|---|---|
@@ -1355,7 +1356,7 @@ EFFECT:
 
 #### EFFECT with DAE values: MIDI-QOL, DAE and macro keys for CHANGES
 
-These `Attribute Key` values need MIDI-QOL or DAE active in the world; a `macro.*` key runs a macro and is written only when the user asks for one. Prefer a dnd5e key from "Effect keys" when it does the same job, because it also works without MIDI-QOL. Every key here was checked against the flags MIDI-QOL 14.6.11 and DAE 14.6.9 register in a live world (dnd5e 6.0.6, 2026-11-14). Replace every `{token}` with one id from the table before writing the key.
+These `Attribute Key` values need MIDI-QOL or DAE active in the world; a `macro.*` key runs a macro and is written only when the user asks for one. Prefer a dnd5e key from "Effect keys" when it does the same job, because it also works without MIDI-QOL. Every key here was checked against the flags MIDI-QOL 14.7.0 and DAE 14.6.10 register in a live world (dnd5e 6.1.0, 2026-11-19), and before that against MIDI-QOL 14.6.11 and DAE 14.6.9 (dnd5e 6.0.6, 2026-11-14). Replace every `{token}` with one id from the table before writing the key.
 
 #### EFFECT with DAE values: MIDI-QOL keys: token ids
 
@@ -1379,6 +1380,7 @@ These `Attribute Key` values need MIDI-QOL or DAE active in the world; a `macro.
 |---|---|
 | On Update Target | `flags.dae.onUpdateTarget` |
 | Activity Over Time | `flags.midi-qol.ActivityOverTime` |
+| Stanch (a skill check ends the effect; MIDI-QOL 14.6.13 or later) | `flags.midi-qol.stanch` |
 | Create Item | `macro.createItem` |
 | Create Item & Run Macro | `macro.createItemRunMacro` |
 | Macro to Execute | `macro.execute` |
@@ -1556,4 +1558,4 @@ EFFECT:
 3. `AUTOMATION.dae.stackable` is one of `noneName`, `noneNameOnly`, `none`, `multi`, `count` or `countDeleteDecrement`. Any other word is a parse error.
 4. Use `flags.midi-qol.*` keys only when MIDI-QOL automation is wanted, with every `{token}` replaced (`flags.midi-qol.advantage.save.dex`). Prefer a native `system.*` key or `Status Conditions` when one does the job.
 5. An expression is stored as text and is not checked on import. Write one only when you know the DAE or MIDI syntax.
-6. Leave `EFFECT_SYSTEM.Rider Activities`, `Rider Effects` and `Rider Items` as `[]` in MIDI YAML. They need dnd5e 6.1, and MIDI-QOL 14.6.11 runs on dnd5e 6.0 only.
+6. `flags.midi-qol.stanch` takes one text value of `name=value` pairs separated by commas: `dc`, `skill` (a skill id such as `med`), `range` and `healing`. A missing `dc` is 10 and a missing `skill` is `med`. Do not write it on an effect that stays on the attacker's own Item.
