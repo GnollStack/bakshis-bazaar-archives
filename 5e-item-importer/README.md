@@ -7,3 +7,4 @@
 | Shows | File |
 | --- | --- |
 | 5e Item Importer preview | [5e-item-importer-preview.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/5e-item-importer/images/5e-item-importer-preview.png) |
+| Feat preview showing three compendium sources for Detect Magic and an automatic link for Knock | [5e-item-importer-feat-compendium-references.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/5e-item-importer/images/5e-item-importer-feat-compendium-references.png) |
