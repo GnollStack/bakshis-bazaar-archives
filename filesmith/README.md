@@ -2,7 +2,7 @@
 
 [Foundry package page](https://foundryvtt.com/packages/filesmith) · [Changelog](CHANGELOG.md) · Help and bug reports: [Discord](https://discord.gg/tcdYk54fxC)
 
-FileSmith V14.4.0 adds group actions to actor sheets and world directories. In the example below, both checked weapons share one action bar. The gallery also shows the transfer review and the two places to right-click in the Items directory.
+The screenshot below shows two checked weapons sharing one action bar on a standard D&D 5e sheet. On Tidy 5e character and NPC sheets, look for **Select items** below the Inventory search and filters. Drag either checked row to open the transfer review. The gallery also shows where to right-click in the Items directory.
 
 <div align="center">
 

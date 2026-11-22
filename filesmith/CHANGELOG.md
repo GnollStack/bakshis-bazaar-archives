@@ -4,6 +4,17 @@
 
 ## Unreleased
 
+Planned for **V14.4.1**.
+
+### Added
+
+- Tidy 5e character and NPC sheets now show **Select items** on Inventory and **Select spells** on Spells, just below the search and filters.
+
+### Fixed
+
+- Transfer checked gear between Tidy and standard D&D 5e sheets. When one NPC gives another the SRD Gnoll’s light Hide Armor and Shield, both arrive as equipment even if the recipient has Spells open. The shield keeps its equipment type and the hide keeps its light armor subtype. Copy keeps the originals, and Move removes the confirmed quantities. Automatic follows Traffick’s actor-sheet drag preference.
+- Dragging several world Items onto a standard PF2e actor sheet now delivers the full selection, including when Spellcasting is open or the drop targets a backpack. The original world Items stay in the sidebar.
+
 ## [14.4.0] - 2026-11-21
 
 ### Added
