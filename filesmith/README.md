@@ -10,10 +10,19 @@ FileSmith V14.4.0 adds group actions to actor sheets and world directories. In t
 
 </div>
 
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/filesmith/gifs/filesmith-bulk-inventory-actions.gif" alt="Boris confirms deletion of four checked items, then receives nine selected entries from the Items sidebar" width="945" height="511">
+
+*Select four items on Boris’s sheet for deletion, then drag nine entries from the Items sidebar onto his inventory.*
+
+</div>
+
 ## Media
 
 | Shows | File |
 | --- | --- |
+| Deleting four checked items from Boris’s inventory and adding nine selected sidebar entries | [filesmith-bulk-inventory-actions.gif](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/filesmith/gifs/filesmith-bulk-inventory-actions.gif) |
 | Selecting a Gnoll’s Spear and Longbow on its D&D 5e sheet | [filesmith-selected-gear.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/filesmith/images/filesmith-selected-gear.png) |
 | Duplicating or deleting two checked weapons from the sheet menu | [filesmith-sheet-context-menu.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/filesmith/images/filesmith-sheet-context-menu.png) |
 | Reviewing quantities before moving gear from a Gnoll to a Minotaur | [filesmith-gear-transfer.png](https://raw.githubusercontent.com/GnollStack/bakshis-bazaar-archives/main/filesmith/images/filesmith-gear-transfer.png) |
