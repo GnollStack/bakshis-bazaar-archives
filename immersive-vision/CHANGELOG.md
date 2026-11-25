@@ -4,6 +4,14 @@
 
 ## Unreleased
 
+### Fixed
+
+- Foundry Attenuation now controls the transition between bright and dim light on ambient and token lights. At zero, a torch can show a distinct dim band and still fade into darkness.
+
+### Changed
+
+- Customize Light Falloff sits below Attenuation. Fade Shape and Fade Strength change how the light dims with distance. Existing light overrides and saved wall-edge feather values carry forward.
+
 ## [14.5.1] - 2026-11-17
 
 ### Fixed
