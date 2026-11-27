@@ -4,13 +4,36 @@
 
 ## Unreleased
 
-### Fixed
+## [14.6.0] - 2026-11-27
 
-- Foundry Attenuation now controls the transition between bright and dim light on ambient and token lights. At zero, a torch can show a distinct dim band and still fade into darkness.
+### Added
+
+- A creature with sensitive eyes now sees the ground past a light's edge. Above 1× Perceived Light Reach it sees faint, mostly gray ground that fades to black at its reach (about 56 ft from a 40 ft light at 2×), and the creatures it could already make out there now stand on visible ground. It stops at walls and at the token's line of sight. Two new sliders in each vision profile shape it: **Perceived-Light Brightening** sets how visible that ground is, and **Perceived-Light Fade** sets how gradually it fades. Both start at 100% for every profile, including the ones you already have: the ground dims steadily from the light's edge to the reach, the way real eyes lose light. Fog of war never saves fading ground, so it always ends in black; a lower Perceived-Light Fade keeps the ground fully visible for longer, and fog of war then remembers that part. At 0% Perceived-Light Brightening the ground stays dark as before. A 1× eye sees no change.
+- **Low-Light Vision**, a game-rule option in each vision profile: Off (Realistic Eyes), On (Dim Light Counts as Bright), or From Character Sheet (PF2e). With it on, the dim part of a light looks like bright light to the creature, in full color. It doesn't brighten a scene that is dim overall. From Character Sheet follows Pathfinder 2e's low-light vision, which darkvision also grants, and switches off while the creature is blinded; in other game systems it can't be chosen. It's off by default and changes only what you see; your game system still decides who notices whom.
+- **Keep Color in Dim Light**, a checkbox in each vision profile that turns off color loss in dim light.
+- **How Immersive Vision FX Sees**, a guide window. Open it from the **?** in Profile Studio, or with **Open Guide** in the module settings; players can open it too. It explains what 1× means, how bright and dim light, color, and darkvision work in IVFX, how D&D 5e and Pathfinder 2e senses map onto vision profiles, and how to change the defaults.
+- **Shade Lit Ground** and **Shade Extended Reach**, two GM-only switches under Diagnostics And Extras in Settings & Vision Profiles. Select a token and they tint the map: one color for the lit ground the token really sees, another for the zone past each light's edge where its sensitive eyes still make out creatures. Both stop at walls and at the token's line of sight. Creatures the token makes out only because of its sensitive eyes get a ring. A legend names every color, including the circles of the existing Debug Sight Radius Overlay.
 
 ### Changed
 
+- Natural Clarity now starts from the light that is really there. A creature's Perceived Light Reach multiplies that light and lets it see a light as if from closer, so at 3× a torch's bright core looks larger and its dim light brighter, fading smoothly toward the light's edge. Brightness only ever falls with distance from a light. At 1×, Natural Clarity leaves a light's brightness alone, except inside darkvision.
+- **Dim-Light Brightening** (formerly Dim-Light Detail, also shown as Low-Light Sensitivity) sets how strong that brightening is.
+- A sensitive eye also sees more of the ground in a light's outer dim band, where the light used to fade out of view before its edge. This comes with Perceived-Light Brightening and follows that slider.
+- Color loss and blur in dim light follow the light that is really there, whatever the creature's sensitivity. A sensitive eye sees dim light brighter but still loses color in it, as real eyes do. Bright light keeps full color. This applies to the species color models; Full Color never loses color.
+- Plainer labels and shorter hints in Profile Studio. Scotopic Color Loss is now **Color Loss in Dim Light**, Scotopic Acuity Loss is **Blur in Dim Light**, Directional Acuity is **Focus Strength**, Bright-Light Sensitivity is **Bright-Light Glare**, Peripheral Desaturation is **Peripheral Color Loss**, and Generic Dichromat is **Red-Green Blind**. Focus & Clarity Fine Tuning is now **Sharpness**, Edge Presentation Fine Tuning is **Sight Edge**, and Special Effects is **Stylized Effects**, which now also holds Night-Vision Look. Saved profiles and settings are unchanged.
+- Settings that do nothing in the current setup are now locked, with a short line saying what turns them on. For example, Tint Strength locks while Color Tint is off, Focus Strength while Focus Pattern is Same in All Directions, Perceived-Light Fade while Perceived-Light Brightening is at 0%, and the Adaptive Eyes timing settings while Adaptive Eyes is off. Locked settings keep their saved values. Settings that usually do nothing but can still matter, such as Perceived-Light Brightening at 1× Perceived Light Reach, show a short note and stay editable.
+- Immersive Vision FX settings are a little roomier and easier to scan: hints use Foundry's softer hint color with taller lines, and a faint line separates each setting. In Token Config the vision parameters panel now starts closed, so Foundry's own vision options stay in view; choosing Custom opens it.
+- More settings show their effect live while you edit, and closing without saving puts everything back. Darkvision now previews in Profile Studio and in a token's Custom mode, and creatures that a higher Perceived Light Reach would reveal appear as you drag. In Settings & Profiles, the Client Default tab previews on the selected token when it uses the client default, and Light Fade Shape, Light Fade Strength, Edge Smoothing, Peripheral Vision and Effects Activation Darkness preview from the Behavior tab. Previews only change your own screen.
 - Customize Light Falloff sits below Attenuation. Fade Shape and Fade Strength change how the light dims with distance. Existing light overrides and saved wall-edge feather values carry forward.
+- IVFX is built to work with any game system, and the README now says that D&D 5e and Pathfinder 2e are supported first. Tested with dnd5e 6.1.1 and PF2e 8.6.1.
+
+### Fixed
+
+- Foundry Attenuation now controls the transition between bright and dim light on ambient and token lights. At zero, a torch can show a distinct dim band and still fade into darkness.
+- Lights no longer show a dark band with a brighter ring around them when Perceived Light Reach is above 1×.
+- When a token's Blinded condition ends, its view no longer stays dark, then gray, until you select the token again. Seen in Pathfinder 2e.
+- Token Config's tab bar no longer gets squeezed to a thin strip when a long Vision or Light tab is open.
+- The Immersive Vision FX section in Token Config now works for a token on a scene you aren't viewing. It used to appear without its status line and ignore your changes. Live preview stays off there, since the token isn't on screen.
 
 ## [14.5.1] - 2026-11-17
 
